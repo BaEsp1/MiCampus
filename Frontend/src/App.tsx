@@ -9,9 +9,9 @@ return(
   <Router>
     <Routes>
     <Route path="/" element = {<LandingPage/>} />
-      <Route path="/Login" element = {<Login/>} />
+      <Route path="/login" element = {<Login/>} />
       {/* Rutas para Alumnos: */}
-      <Route path="/User" element = {<DashboardUser/>} />
+      <Route path="/user" element = {<DashboardUser/>} />
 
       {/* Rutas para profesores: */}
 
