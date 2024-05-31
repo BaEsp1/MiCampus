@@ -6,7 +6,7 @@ import User from "../../Imagenes/Iconos/user.png"
 
 const Navbar: React.FC = () => {
     // Estado provisorio , cuando tengamos token simplemente se modifica :
-    const [isLoggedIn] = useState<boolean>(true); 
+    const [isLoggedIn] = useState<boolean>(false); 
 
     return (
         <nav className="bg-white flex justify-between items-center" style={{height: '80px'}}>
