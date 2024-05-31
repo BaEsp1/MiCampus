@@ -1,0 +1,54 @@
+.carousel-container {
+    width: 100%;
+    margin: 0 auto;
+}
+
+.slick-slide {
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.slick-center .carousel-item {
+    transform: scale(1.1);
+    opacity: 1;
+}
+
+.carousel-item {
+    width: 300px;
+    height: 328px;
+    text-align: center;
+    opacity: 0.7;
+    transform: scale(0.8);
+    position: relative;
+}
+
+.slick-center .carousel-item {
+    opacity: 2;
+    transform: scale(1.1);
+}
+
+.carousel-item img {
+    width: 300px; 
+    height: 160px;
+    object-fit: cover;
+}
+
+.info-box {
+    width: 300px; 
+    height: 160px;
+    background: rgba(255, 255, 255, 0.8);
+    padding: 10px;
+    box-sizing: border-box; 
+}
+.info-box h1{
+    font-weight: bolder;
+}
+
+.slick-list {
+    overflow: hidden;
+}
+
+.carousel-item .info-box h3 {
+    font-size: 16px;
+    text-align: left;
+    padding: 0 0.5em;
+}
