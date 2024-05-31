@@ -6,6 +6,8 @@ import DashboardUser from "./Pages/Dashboar-User";
 import Navbar from "./Components/NavBar/NavBar";
 
 const App: React.FC = () => {
+
+  // Debemos restringir luego las vistas para alumno , profesor y general
   return (
     <>
       <Navbar />
