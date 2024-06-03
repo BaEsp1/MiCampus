@@ -58,3 +58,12 @@
 .navbar a:hover {
     background-color:#D9D9D9;
 }
+
+.submenu {
+    padding-left: 20px;
+}
+
+.submenu a {
+    display: block;
+    margin-top: 10px;
+}

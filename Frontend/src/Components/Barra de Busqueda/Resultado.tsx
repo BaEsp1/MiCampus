@@ -13,7 +13,7 @@ const Resultados: React.FC = () => {
 
     return (
         <div>
-            {searchResults.length > 0 ? (
+            {searchResults.length ? (
                 <ul>
                     {searchResults.map((result, index) => (
                         <li key={index}>{result}</li>

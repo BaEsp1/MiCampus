@@ -2,8 +2,9 @@ import React from "react";
 import { Route, Routes } from "react-router-dom";
 import Login from "./Pages/Login";
 import LandingPage from "./Pages/LandingPage";
-import DashboardUser from "./Pages/Dashboar-User";
 import Navbar from "./Components/NavBar/NavBar";
+import PerfilAlumno from "./Pages/Perfil-Alumno";
+import DashboardAlumno from "./Pages/Dashboard-Alumno";
 
 const App: React.FC = () => {
 
@@ -14,7 +15,9 @@ const App: React.FC = () => {
       <Routes>
         <Route path="/" element={<LandingPage />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/user" element={<DashboardUser />} />
+        {/* Rutas del Alumno */}
+        <Route path="/dash" element={<DashboardAlumno />} />
+        <Route path="/alumno" element ={<PerfilAlumno/>} />
       </Routes>
     </>
   );
