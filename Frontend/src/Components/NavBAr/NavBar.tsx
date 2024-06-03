@@ -25,7 +25,7 @@ const Navbar: React.FC = () => {
                                 <a href="/"><img src={LogoL} alt="Logo" style={{maxWidth: '25%'}} /></a>
                             </div>
                             <ul className="flex items-center flex-end" style={{gap: '4em', alignItems: 'center', width: '12rem'}}>                            
-                                <li className="mr-6"><a href="/" className="text-black font-semibold">Home</a></li>
+                                <li className="mr-6"><a href="/dash" className="text-black font-semibold">Home</a></li>
                                 <li>
                                     <a href="/alumno">
                                         <img src={User} style={{maxWidth: '80%', borderRadius:'2em'}}/>
