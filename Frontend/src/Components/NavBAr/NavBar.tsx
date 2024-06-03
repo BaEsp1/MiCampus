@@ -3,17 +3,18 @@ import Logo from "../../Imagenes/Mi campus/LogoC.png";
 import LogoL from "../../Imagenes/Mi campus/LogoL.png";
 import Menu from '../Menu-Burger/Menu';
 import User from "../../Imagenes/Iconos/user.png"
-import { useEffect } from 'react';
+// import { useEffect } from 'react';
 
 const Navbar: React.FC = () => {
-    const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false);
+    const [isLoggedIn] = useState<boolean>(true);
 
-    useEffect(() => {
-        const token = localStorage.getItem('token');
-        setIsLoggedIn(!!token); 
-    }, []);
+    // useEffect(() => {
+    //     const token = localStorage.getItem('token');
+    //     setIsLoggedIn(!!token); 
+    // }, []);
 
     return (
+        <>
         <nav className="bg-white flex justify-between items-center" style={{height: '80px'}}>
             <div className="container mx-auto">
                 <div className="flex items-center justify-between">
@@ -26,7 +27,7 @@ const Navbar: React.FC = () => {
                             <ul className="flex items-center flex-end" style={{gap: '4em', alignItems: 'center', width: '12rem'}}>                            
                                 <li className="mr-6"><a href="/" className="text-black font-semibold">Home</a></li>
                                 <li>
-                                    <a href="/perfil">
+                                    <a href="/alumno">
                                         <img src={User} style={{maxWidth: '80%', borderRadius:'2em'}}/>
                                     </a>
                                 </li>
@@ -47,6 +48,8 @@ const Navbar: React.FC = () => {
                 </div>
             </div>
         </nav>
+        <hr style={{ borderColor: '#979797' }}/>
+        </>
     );
 }
 

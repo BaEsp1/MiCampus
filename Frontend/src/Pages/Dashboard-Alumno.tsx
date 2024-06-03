@@ -4,8 +4,7 @@ import Cards from '../Components/Cards Cursos/Cards';
 import { useState, useEffect  } from 'react';
 import Resultados from '../Components/Barra de Busqueda/Resultado';
 
-
-const DashboardUser: React.FC = () => {
+const DashboardAlumno: React.FC = () => {
 
     const [userData, setUserData] = useState<string>("Alumn@"); // Cambiar esto cuando tengamos la data !!!
  
@@ -19,7 +18,6 @@ const DashboardUser: React.FC = () => {
     
     return (
         <>
-        <hr style={{ borderColor: '#979797' }}/>
     <div className='Dash' style={{display:'flex', flexDirection:'row'}}>
 
         <div className='Col1' style={{ width:'275px'}}>
@@ -47,4 +45,4 @@ const DashboardUser: React.FC = () => {
     );
 }
 
-export default DashboardUser
+export default DashboardAlumno

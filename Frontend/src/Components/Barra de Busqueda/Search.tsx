@@ -1,15 +1,15 @@
 import React, { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { searchMaterias } from '../../Redux/Actions/searchActions';
-import { RootState, AppDispatch } from '../../Redux/store';
+import { AppDispatch } from '../../Redux/store';
 import './Search.css'; 
 import Lupa from "../../Imagenes/Iconos/lupa.png";
 
 const SearchBar: React.FC = () => {
     const [query, setQuery] = useState('');
     const dispatch = useDispatch<AppDispatch>();
-    const searchResults = useSelector((state: RootState) => state.user.searchResults);
-    console.log(searchResults)
+    // const searchResults = useSelector((state: RootState) => state.user.searchResults);
+    // console.log(searchResults)
     // const loading = useSelector((state: RootState) => state.user.loading);
 
     const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -29,7 +29,7 @@ const SearchBar: React.FC = () => {
                 type="search"
                 value={query}
                 onChange={handleInputChange}
-                placeholder="Buscar materia"
+                placeholder="Buscar curso"
                 className="search-input"
             />
         </div>
