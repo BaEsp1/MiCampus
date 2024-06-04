@@ -45,3 +45,13 @@
 .card:hover .overlay {
     opacity: 1;
 }
+
+.popup{
+    background-color: rgba(0, 0, 0, 0.5);
+    /* color: white; */
+}
+
+.popup ul li:hover{
+background-color: #cccc;
+font-weight: bold;
+}
