@@ -1,21 +1,26 @@
-// import { AppDispatch } from '../store';
+import axios from 'axios';
 
+interface User {
+    name: string;
+    last_name: string;
+    email: string;
+    dni: string;
+    birthdate: string;
+    representante: {
+        relacion: string;
+        name: string;
+        telefono: string;
+        correoElectronico: string;
+    };
+}
 
-// export const saveInfo = (Data) => async (dispatch: AppDispatch) => {
-//     try {
-//         const response = await fetch('/api/saveInfo', {
-//             method: 'POST',
-//             headers: {
-//                 'Content-Type': 'application/json'
-//             },
-//             body: JSON.stringify({ Data })
-//         });
+const API_URL = 'endpoint';
 
-//         if (!response.ok) {
-//             throw new Error('Failed to save information');
-//         }
-//         dispatch( "lol");
-//     } catch (error) {
-//         console.error('Error saving information:', error);
-//     }
-// };
+export const updateUser = async (data: User) => {
+    try {
+        const response = await axios.post(`${API_URL}/updateUser`, data);
+        return response.data;
+    } catch (error) {
+        throw new Error('Error actualizando el usuario');
+    }
+};
