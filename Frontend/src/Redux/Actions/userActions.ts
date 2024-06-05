@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { createAsyncThunk } from '@reduxjs/toolkit';
 
 interface User {
     name: string;
@@ -24,3 +25,15 @@ export const updateUser = async (data: User) => {
         throw new Error('Error actualizando el usuario');
     }
 };
+
+export const fetchProfesor = createAsyncThunk(
+    'user/fetchProfesor',
+    async (profesor: string, thunkAPI) => {
+      try {
+        const response = await axios.get(`${API_URL}/${profesor}`);
+        return response.data;
+      } catch (error) {
+        return thunkAPI.rejectWithValue('Error al buscar datos');
+      }
+    }
+  );
