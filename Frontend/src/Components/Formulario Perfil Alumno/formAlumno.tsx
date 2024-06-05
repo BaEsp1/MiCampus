@@ -1,15 +1,14 @@
 import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
-import { AppDispatch } from '../../Redux/store'; 
-import { saveInfo } from '../../Redux/Actions/userActions';
+// import { useDispatch } from 'react-redux';
+// import { AppDispatch } from '../../Redux/store'; 
 import icon from '../../Imagenes/Iconos/user.png';
 import { toast } from 'react-toastify';
 
 const FormPerfilAlumno: React.FC = () => {
-    const dispatch = useDispatch<AppDispatch>();
+    // const dispatch = useDispatch<AppDispatch>();
 
-    const [alumnoInfo, setAlumnoInfo] = useState({
-        nombre: '',
+    const [userData, setuserData] = useState({
+        name: '',
         tipoDocumento: '',
         numeroDocumento: '',
         correoElectronico: ''
@@ -17,18 +16,18 @@ const FormPerfilAlumno: React.FC = () => {
 
     const [representanteInfo, setRepresentanteInfo] = useState({
         relacion: '',
-        nombre: '',
+        name: '',
         telefono: '',
         correoElectronico: ''
     });
 
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
-            if (alumnoInfo.nombre && alumnoInfo.tipoDocumento 
-                && alumnoInfo.numeroDocumento && alumnoInfo.correoElectronico 
-                && representanteInfo.relacion && representanteInfo.nombre 
+            if (userData.name && userData.tipoDocumento 
+                && userData.numeroDocumento && userData.correoElectronico 
+                && representanteInfo.relacion && representanteInfo.name 
                 && representanteInfo.telefono && representanteInfo.correoElectronico){
-            dispatch(saveInfo(alumnoInfo, representanteInfo));
+            // dispatch(saveInfo(userData, representanteInfo));
             toast.success('Información guardada correctamente');
         } else {
             toast.error('Por favor completa todos los campos');
@@ -41,13 +40,13 @@ const FormPerfilAlumno: React.FC = () => {
                 <h2 className="font-semibold text-xl">Información del alumno</h2>
 
                 <div className="flex flex-col gap-2">
-                    <label>Nombre y Apellido:</label>
+                    <label>name y Apellido:</label>
                     <input 
                         type="text" 
                         className="border rounded p-2 w-[21em]" 
                         style={{ borderColor: '#CCCCCC' }}
-                        value={alumnoInfo.nombre}
-                        onChange={(e) => setAlumnoInfo({ ...alumnoInfo, nombre: e.target.value })}
+                        value={userData.name}
+                        onChange={(e) => setuserData({ ...userData, name: e.target.value })}
                     />
                 </div>
 
@@ -56,8 +55,8 @@ const FormPerfilAlumno: React.FC = () => {
                     <select 
                         className="border rounded p-2" 
                         style={{ borderColor: '#CCCCCC' }}
-                        value={alumnoInfo.tipoDocumento}
-                        onChange={(e) => setAlumnoInfo({ ...alumnoInfo, tipoDocumento: e.target.value })}
+                        value={userData.tipoDocumento}
+                        onChange={(e) => setuserData({ ...userData, tipoDocumento: e.target.value })}
                     >
                         <option>DNI</option>
                         <option>DU</option>
@@ -70,8 +69,8 @@ const FormPerfilAlumno: React.FC = () => {
                         type="text" 
                         className="border rounded p-2 w-[21em]" 
                         style={{ borderColor: '#CCCCCC' }}
-                        value={alumnoInfo.numeroDocumento}
-                        onChange={(e) => setAlumnoInfo({ ...alumnoInfo, numeroDocumento: e.target.value })}
+                        value={userData.numeroDocumento}
+                        onChange={(e) => setuserData({ ...userData, numeroDocumento: e.target.value })}
                     />
                 </div>
 
@@ -81,8 +80,8 @@ const FormPerfilAlumno: React.FC = () => {
                         type="text" 
                         className="border rounded p-2 w-[21em]" 
                         style={{ borderColor: '#CCCCCC' }}
-                        value={alumnoInfo.correoElectronico}
-                        onChange={(e) => setAlumnoInfo({ ...alumnoInfo, correoElectronico: e.target.value })}
+                        value={userData.correoElectronico}
+                        onChange={(e) => setuserData({ ...userData, correoElectronico: e.target.value })}
                     />
                 </div>
             </div>
@@ -105,13 +104,13 @@ const FormPerfilAlumno: React.FC = () => {
                 </div>
 
                 <div className="flex flex-col gap-2">
-                    <label>Nombre y Apellido:</label>
+                    <label>name y Apellido:</label>
                     <input 
                         type="text" 
                         className="border rounded p-2 w-[21em]"  
                         style={{ borderColor: '#CCCCCC' }}
-                        value={representanteInfo.nombre}
-                        onChange={(e) => setRepresentanteInfo({ ...representanteInfo, nombre: e.target.value })}
+                        value={representanteInfo.name}
+                        onChange={(e) => setRepresentanteInfo({ ...representanteInfo, name: e.target.value })}
                     />
                 </div>
 
