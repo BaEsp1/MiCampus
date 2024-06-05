@@ -9,7 +9,13 @@ const Cards: React.FC = () => {
     const [selectedProfesor, setSelectedProfesor] = useState<string | null>(null);
 
     const materias = ['Matemáticas', 'Lengua Castellana', 'Historia', 'Biología'];
-    const colors = ['#b12cc3', '#34103e', '#ff6600', '#ffcc45']; 
+    const colors = [
+        "#003366", "#003D80", "#004499", "#004BB3", "#0052CC",
+        "#3269FF", "#3C72FF", "#456AFF", "#4E73FF", "#576CFF",
+        "#6065FF", "#695EFF", "#7257FF", "#7B50FF", "#8449FF",
+        "#8D42FF", "#963BFF", "#9F34FF", "#A82DFF", "#B126FF",
+      ]
+      
     const profesores = [
         { nombre: 'María', apellido: 'González' }, { nombre: 'Juan', apellido: 'Martínez' }, { nombre: 'Laura', apellido: 'Rodríguez' }, { nombre: 'Carlos', apellido: 'López' }, { nombre: 'Ana', apellido: 'Pérez' }, { nombre: 'Pedro', apellido: 'García' }, { nombre: 'Lucía', apellido: 'Fernández' }, { nombre: 'Diego', apellido: 'Sánchez' }, { nombre: 'Sara', apellido: 'Romero' }, { nombre: 'Pablo', apellido: 'Hernández' }, { nombre: 'Elena', apellido: 'Gómez' }, { nombre: 'Javier', apellido: 'Díaz' }, { nombre: 'Marta', apellido: 'Vargas' }, { nombre: 'Ricardo', apellido: 'Moreno' }, { nombre: 'Carmen', apellido: 'Jiménez' }, { nombre: 'Alejandro', apellido: 'Ruíz' }, { nombre: 'Isabel', apellido: 'Ortega' }, { nombre: 'Luis', apellido: 'Navarro' }, { nombre: 'Silvia', apellido: 'Molina' }, { nombre: 'Raúl', apellido: 'Santos' }
     ];

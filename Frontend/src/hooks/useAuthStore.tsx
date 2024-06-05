@@ -4,8 +4,8 @@ import { authenticated, checkingAuth, clearErrorMessage, notAuthenticated } from
 import { useNavigate } from "react-router-dom";
 import { AxiosError } from "axios";
 
-export const useAuthStore =() => {
-    const navigate = useNavigate()
+export const useAuthStore = () => {
+    const navigate = useNavigate();
     const dispatch = useAppDispatch();
     const {isLoading, isLogged, errorMessage} = useAppSelector(state => state.auth);
 
@@ -20,11 +20,13 @@ export const useAuthStore =() => {
 				credentials,
 			);
 
-			const { token, user } = data;
-			localStorage.setItem('x-token', token);
+            const { token, user } = data;
+            localStorage.setItem('x-token', token);
+            localStorage.setItem('user', JSON.stringify(user));
 
-			dispatch(authenticated());
+            dispatch(authenticated());
             navigate('/user');
+
 		} catch (error) {
             if (error instanceof AxiosError) {
 				dispatch(notAuthenticated('Error de credenciales'));
@@ -43,3 +45,4 @@ export const useAuthStore =() => {
         startLogin,
     }
 }
+
