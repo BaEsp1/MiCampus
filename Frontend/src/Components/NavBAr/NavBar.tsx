@@ -49,7 +49,7 @@ const Navbar: React.FC = () => {
                             <>
                                 <div className="flex items-center w-48 justify-between">
                                     <Menu />
-                                    <Link to="/user" className="ml-8"><img src={LogoL} alt="Logo" /></Link>
+                                    <Link to="/user" className="ml-8"><img src={LogoL} alt="Logo" className='h-[3em]'/></Link>
                                 </div>
                                 <ul className="flex items-center" style={{ width: '17rem' }}>
                                     <li className="mr-6"><Link to="/user" className="text-black font-semibold">Home</Link></li>

@@ -113,7 +113,7 @@ const FormPerfilAlumno: React.FC = () => {
                 <div className="flex flex-col gap-2">
                     <label>Relación con el Alumno:</label>
                     <select
-                        className="border rounded p-2"
+                        className="border rounded p-2 w-[21em] h-11"
                         style={{ borderColor: '#CCCCCC' }}
                         value={userData?.representante?.relacion || ''}
                         onChange={(e) => handleRepresentanteInfoChange('relacion', e.target.value )}
@@ -157,10 +157,10 @@ const FormPerfilAlumno: React.FC = () => {
             </div>
             <div className="flex flex-col gap-8">
                 <h2 className="font-semibold text-xl">Foto de perfil del alumno</h2>
-                <div className="w-10 h-10 rounded-full flex items-center justify-center text-white text-lg" style={{backgroundColor:'rgb(54, 74, 137)'}}>
+                <div className="w-24 h-24 rounded-full flex items-center justify-center text-white text-3xl" style={{backgroundColor:'rgb(54, 74, 137)' , alignSelf:'center'}}>
                     {userData ? getInitials(userData.name, userData.last_name) : ''}
                 </div>
-                <button type="button" className="bg-blue-500 text-white rounded p-2">Subir</button>
+                <button type="button" className="bg-blue-500 text-white rounded p-2 w-[12em]"  style={{alignSelf:'center'}}>Subir</button>
             </div>
             <div className="w-full flex justify-center">
                 <button type="submit" style={{ backgroundColor: '#070654' }} className="text-white rounded p-2 w-[21em]">Guardar</button>

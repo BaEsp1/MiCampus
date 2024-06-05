@@ -23,7 +23,7 @@ const DashboardAlumno: React.FC = () => {
             <div className="w-72"></div>
             <div className="m-8 gap-8 flex flex-col">
                 <div className="Bienvenida">
-                    <h1 className="text-2xl text-black ">
+                    <h1 className="p-4 font-semibold text-3xl">
                         ¡Bienvenido {userData ? `${userData.name} ${userData.last_name}` : 'Alumn@'}!
                     </h1>
                 </div>
