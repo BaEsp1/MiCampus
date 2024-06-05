@@ -1,11 +1,15 @@
-import { createSlice } from '@reduxjs/toolkit'
+import { PayloadAction, createSlice } from '@reduxjs/toolkit'
 
 interface AuthSlice {
-  status: 'authenticated' | 'not-authenticated' | 'checking';
+  isLogged: boolean;
+  isLoading: boolean;
+  errorMessage: string | undefined;
 }
 
 const initialState: AuthSlice = {
-    status: 'not-authenticated'
+  isLogged: false,
+  isLoading: false,
+  errorMessage: ''
 }
 
 export const authSlice = createSlice({
@@ -13,16 +17,22 @@ export const authSlice = createSlice({
   initialState,
   reducers: {
     checkingAuth: (state) => {
-        state.status = 'checking'
+      state.isLoading = true
     },
     authenticated: (state) => {
-      state.status = 'authenticated';
+      state.isLogged = true;
+      state.isLoading = false
     },
-    notAuthenticated: (state) => {
-        state.status = 'not-authenticated';
+    notAuthenticated: (state, { payload }: PayloadAction<string>) => {
+      state.isLogged = false;
+      state.isLoading = false;
+      state.errorMessage = payload;
+    },
+    clearErrorMessage: state => {
+      state.errorMessage = undefined;
     },
   },
 })
 
-export const {checkingAuth, authenticated, notAuthenticated } = authSlice.actions;
+export const { checkingAuth, authenticated, notAuthenticated, clearErrorMessage } = authSlice.actions;
 export const authReducer = authSlice.reducer;

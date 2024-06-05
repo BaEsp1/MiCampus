@@ -1,20 +1,25 @@
-import { FormEvent } from 'react';
-import { useForm, useAuthStore } from '../../hooks';
+import { useAuthStore } from '../../hooks';
 import './login.css';
+import CheckingLogin from './CheckingLogin';
+import { SubmitHandler, useForm } from 'react-hook-form';
+
+type FormFields = {
+    email: string;
+    password: string;
+};
 
 const Login: React.FC = () => {
 
-    const { starLogin } = useAuthStore()
+    const { isLoading, startLogin, errorMessage } = useAuthStore();
 
-    const { email, password, onInputChange, onResetForm } = useForm({
-        email: '',
-        password: ''
-    })
 
-    const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
-        event.preventDefault();
-        starLogin({ email, password }).finally(onResetForm)
-    }
+    const {
+        register,
+        handleSubmit,
+        formState: { errors },
+    } = useForm<FormFields>();
+
+    const onSubmit: SubmitHandler<FormFields> = data => startLogin(data);
 
     return (
         <>
@@ -23,7 +28,7 @@ const Login: React.FC = () => {
                     <section className="content">
                         <h2 className="content__title">Revisa tus calificaciones y progreso</h2>
                         <p className="content__description">
-                        Monitorea tu rendimiento académico con acceso instantáneo a tus calificaciones y reportes de progreso.
+                            Monitorea tu rendimiento académico con acceso instantáneo a tus calificaciones y reportes de progreso.
                         </p>
                     </section>
 
@@ -34,16 +39,20 @@ const Login: React.FC = () => {
                             <span>a nuestra</span>
                             <span>pagina web</span>
                         </div>
-                        <form onSubmit={handleSubmit}>
+                        <form onSubmit={handleSubmit(onSubmit)}>
                             <div className="form__inputGroup">
                                 <input
                                     id="email"
                                     type="email"
-                                    className="form__input"
+                                    className={`form__input ${errors.email ? ' form__input--error' : ''}`}
                                     placeholder=""
-                                    name='email'
-                                    value={email}
-                                    onChange={onInputChange}
+                                    {...register('email', {
+                                        required: 'El correo es obligatorio',
+                                        pattern: {
+                                            value: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
+                                            message: 'El correo no es valido',
+                                        },
+                                    })}
                                 />
                                 <label htmlFor="email" className="form__label">Correo</label>
                             </div>
@@ -51,15 +60,21 @@ const Login: React.FC = () => {
                                 <input
                                     id="password"
                                     type="password"
-                                    className="form__input"
+                                    className={`form__input ${errors.password ? ' form__input--error' : ''}`}
                                     placeholder=""
-                                    name='password'
-                                    value={password}
-                                    onChange={onInputChange}
+                                    {...register('password', {
+                                        required: 'La contraseña es obligatoria',
+                                        minLength: {
+                                            value: 6,
+                                            message: 'Debe tener más de 6 caracteres',
+                                        },
+                                    })}
                                 />
                                 <label htmlFor="password" className="form__label">Contraseña</label>
                             </div>
-                            <button type='submit' className="form__submit">Iniciar Sesión</button>
+                            <button type='submit' className="form__submit" disabled={isLoading}>Iniciar Sesión</button>
+
+
                             <p className='form__ref'>¿Olvidaste tu contraseña? Comunicate a <a target="_blank" href="mailto:intitucioneducativa@gmail.com">
                                 intitucioneducativa@gmail.com
                             </a>
@@ -67,9 +82,15 @@ const Login: React.FC = () => {
                         </form>
                     </section>
                 </div>
-
+                <div className='alertsContainer'>
+                    {/* Alert */}
+                    {errors.email && (<div className='form__alert'>{errors.email.message} </div>)}
+                    {errors.password && (<div className='form__alert'>{errors.password.message} </div>)}
+                    {errorMessage && (<div className='form__alert'>{errorMessage} </div>)}
+                </div>
                 <div className="fondo__color"></div>
             </main>
+            {isLoading && <CheckingLogin />}
         </>
     );
 }
