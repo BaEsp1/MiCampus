@@ -115,7 +115,7 @@ const FormPerfilAlumno: React.FC = () => {
                     <select
                         className="border rounded p-2"
                         style={{ borderColor: '#CCCCCC' }}
-                        value={userData?.representante.relacion || ''}
+                        value={userData?.representante?.relacion || ''}
                         onChange={(e) => handleRepresentanteInfoChange('relacion', e.target.value )}
                     >
                         <option value="">Seleccione</option>
@@ -130,7 +130,7 @@ const FormPerfilAlumno: React.FC = () => {
                         type="text"
                         className="border rounded p-2 w-[21em]"
                         style={{ borderColor: '#CCCCCC' }}
-                        value={userData?.representante.name || ''}
+                        value={userData?.representante?.name || ''}
                         onChange={(e) => handleRepresentanteInfoChange('name', e.target.value )}
                     />
                 </div>
@@ -140,7 +140,7 @@ const FormPerfilAlumno: React.FC = () => {
                         type="text"
                         className="border rounded p-2 w-[21em]"
                         style={{ borderColor: '#CCCCCC' }}
-                        value={userData?.representante.telefono || ''}
+                        value={userData?.representante?.telefono || ''}
                         onChange={(e) => handleRepresentanteInfoChange('telefono', e.target.value )}
                     />
                 </div>
@@ -150,7 +150,7 @@ const FormPerfilAlumno: React.FC = () => {
                         type="text"
                         className="border rounded p-2 w-[21em]"
                         style={{ borderColor: '#CCCCCC' }}
-                        value={userData?.representante.correoElectronico || ''}
+                        value={userData?.representante?.correoElectronico || ''}
                         onChange={(e) => handleRepresentanteInfoChange('correoElectronico', e.target.value )}
                     />
                 </div>
