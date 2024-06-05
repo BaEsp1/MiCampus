@@ -10,6 +10,7 @@ interface User {
     last_name: string;
     email: string;
     dni: string;
+    birthdate: string;
     representante: {
         relacion: string;
         name: string;
