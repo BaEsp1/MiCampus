@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import { toast } from 'react-toastify';
+import Swal from 'sweetalert2';
+import withReactContent from 'sweetalert2-react-content';
 import { updateUser } from '../../Redux/Actions/userActions';
+
+const MySwal = withReactContent(Swal);
 
 interface User {
     name: string;
@@ -23,7 +26,15 @@ const FormPerfilAlumno: React.FC = () => {
         const userDataFromStorage = localStorage.getItem('user');
         if (userDataFromStorage) {
             const userDataParsed = JSON.parse(userDataFromStorage);
-            setUserData(userDataParsed);
+            setUserData({
+                ...userDataParsed,
+                representante: userDataParsed.representante || {
+                    relacion: '',
+                    name: '',
+                    telefono: '',
+                    correoElectronico: ''
+                }
+            });
         }
     }, []);
 
@@ -34,7 +45,7 @@ const FormPerfilAlumno: React.FC = () => {
     };
 
     const handleRepresentanteInfoChange = (key: keyof User['representante'], value: string) => {
-        if (userData) {
+        if (userData && userData.representante) {
             setUserData({
                 ...userData,
                 representante: {
@@ -51,15 +62,33 @@ const FormPerfilAlumno: React.FC = () => {
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
-        if (userData?.name && userData.dni && userData.email && userData.representante.relacion && userData.representante.name && userData.representante.telefono && userData.representante.correoElectronico) {
-            try {
-                await updateUser(userData);
-                toast.success('Información guardada correctamente');
-            } catch (error) {
-                toast.error('Error guardando la información');
+        if (userData) {
+            const { name, dni, email, representante } = userData;
+            if (name && dni && email && representante && representante.relacion && representante.name && representante.telefono && representante.correoElectronico) {
+                try {
+                    // console.log('Updating user with data:', userData);
+                    await updateUser(userData);
+                    MySwal.fire(
+                        '¡Éxito!',
+                        'Información guardada correctamente',
+                        'success'
+                    );
+                } catch (error) {
+                    // console.error('Error updating user:', error);
+                    MySwal.fire(
+                        'Error',
+                        'Error guardando la información',
+                        'error'
+                    );
+                }
+            } else {
+                // console.warn('Some fields are missing');
+                MySwal.fire(
+                    'Error',
+                    'Por favor completa todos los campos',
+                    'error'
+                );
             }
-        } else {
-            toast.error('Por favor completa todos los campos');
         }
     };
 

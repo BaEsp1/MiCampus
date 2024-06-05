@@ -64,7 +64,7 @@ const Cards: React.FC = () => {
                     <div style={{ backgroundColor: colors[index % colors.length], height: '5em', borderRadius: '8px 8px 0 0 ' }}>
                     </div>
                     <hr/>
-                    <div style={{ padding: '1em' }}>
+                    <div style={{ padding: '0.5em', height:'5em' ,alignContent: 'center'}}>
                         <h3>{materia}</h3>
                     </div>
                     <hr/>
@@ -75,19 +75,24 @@ const Cards: React.FC = () => {
                     </div>
                 </div>
             ))}
-            {popupOpen && (
-                <div className="popup fixed inset-0 flex items-center justify-center">
-                    <div className="bg-white p-4 rounded shadow-lg">
-                        <h3 className="text-lg font-semibold mb-4">Has seleccionado {selectedMateria} </h3>
-                        <ul className="text-center">
-                            <li><Link to={`/profesor/${selectedProfesor}/${selectedMateria}/asistencias`}>Ir a las asistencias de la materia</Link></li>
-                            <li><Link to={`/profesor/${selectedProfesor}/${selectedMateria}/calificaciones`}>Ver las notas de la materia</Link></li>
-                            <li><Link to={`/profesor/${selectedProfesor}`}>Ver la información del profesor</Link></li>
-                        </ul>
-                        <button className="bg-gray-200 px-4 py-2 mt-4 rounded" onClick={() => setPopupOpen(false)}>Cerrar</button>
-                    </div>
-                </div>
-            )}
+{popupOpen && (
+    <div className="popup fixed inset-0 flex items-center justify-center">
+        <div className="bg-white p-5 rounded shadow-lg w-[25em] relative">
+            <button
+                className="absolute top-2 right-2 bg-blue-400 px-2 py-1 rounded font-semibold text-white"
+                onClick={() => setPopupOpen(false)}
+            >
+                X
+            </button>
+            <h3 className="text-lg font-semibold mb-4 text-center">Has seleccionado: {selectedMateria}</h3>
+            <ul className="text-center">
+                <li><Link to={`/profesor/${selectedProfesor}/${selectedMateria}/asistencias`}>Ir a las asistencias de la materia</Link></li>
+                <li><Link to={`/profesor/${selectedProfesor}/${selectedMateria}/calificaciones`}>Ver las notas de la materia</Link></li>
+                <li><Link to={`/profesor/${selectedProfesor}/${selectedMateria}`}>Ver la información del profesor</Link></li>
+            </ul>
+        </div>
+    </div>
+)}
         </div>
     );
 }

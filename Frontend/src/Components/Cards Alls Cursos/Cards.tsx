@@ -58,7 +58,7 @@ const Cards: React.FC = () => {
             <ul className="text-center">
                 <li><Link to={`/profesor/${selectedProfesor}/${selectedMateria}/asistencias`}>Ir a las asistencias de la materia</Link></li>
                 <li><Link to={`/profesor/${selectedProfesor}/${selectedMateria}/calificaciones`}>Ver las notas de la materia</Link></li>
-                <li><Link to={`/profesor/${selectedProfesor}`}>Ver la información del profesor</Link></li>
+                <li><Link to={`/profesor/${selectedProfesor}/${selectedMateria}`}>Ver la información del profesor</Link></li>
             </ul>
         </div>
     </div>

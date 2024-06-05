@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react';
+import Swal from 'sweetalert2';
+import withReactContent from 'sweetalert2-react-content';
 import Logo from "../../Imagenes/Mi campus/LogoC.png";
 import LogoL from "../../Imagenes/Mi campus/LogoL.png";
 import Menu from '../Menu-Burger/Menu';
@@ -6,8 +8,10 @@ import ProfileInitials from '../Iniciales/ProfileInitial';
 import Off from "../../Imagenes/Iconos/deslogueo.png";
 import { useAppSelector } from '../../Redux/hooks';
 import { useDispatch } from 'react-redux';
-import { useNavigate , Link} from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import { notAuthenticated } from '../../Redux/auth';
+
+const MySwal = withReactContent(Swal);
 
 interface User {
     name: string;
@@ -16,16 +20,15 @@ interface User {
 }
 
 const Navbar: React.FC = () => {
-    const  {isLogged}  = useAppSelector((state) => state.auth)
+    const { isLogged } = useAppSelector((state) => state.auth);
     const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false);
     const [userData, setUserData] = useState<User | null>(null);
-    const dispatch= useDispatch();
-    const navigate= useNavigate();
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
 
     useEffect(() => {
-        if( isLogged  == true )
-        setIsLoggedIn(true);
-        
+        if (isLogged === true) setIsLoggedIn(true);
+
         const userDataFromStorage = localStorage.getItem('user');
         if (userDataFromStorage) {
             setUserData(JSON.parse(userDataFromStorage));
@@ -33,11 +36,26 @@ const Navbar: React.FC = () => {
     }, [isLogged]);
 
     const logout = () => {
-        localStorage.removeItem('user');
-        setIsLoggedIn(false);
-        setUserData(null);
-        dispatch(notAuthenticated("")); 
-        navigate('/');
+        MySwal.fire({
+            title: '¿Quieres cerrar tu sesión?',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonText: 'Sí',
+            cancelButtonText: 'No',
+            reverseButtons: true,
+        }).then((result) => {
+            if (result.isConfirmed) {
+                localStorage.removeItem('user');
+                setIsLoggedIn(false);
+                setUserData(null);
+                dispatch(notAuthenticated("deslogueo"));
+                MySwal.fire(
+                    '¡Sesión cerrada!',
+                    'Has cerrado tu sesión correctamente.',
+                    'success'
+                ).then(() => navigate('/'));
+            }
+        });
     };
 
     return (
@@ -49,7 +67,7 @@ const Navbar: React.FC = () => {
                             <>
                                 <div className="flex items-center w-48 justify-between">
                                     <Menu />
-                                    <Link to="/user" className="ml-8"><img src={LogoL} alt="Logo" className='h-[3em]'/></Link>
+                                    <Link to="/user" className="ml-8"><img src={LogoL} alt="Logo" className='h-[3em]' /></Link>
                                 </div>
                                 <ul className="flex items-center" style={{ width: '17rem' }}>
                                     <li className="mr-6"><Link to="/user" className="text-black font-semibold">Home</Link></li>
