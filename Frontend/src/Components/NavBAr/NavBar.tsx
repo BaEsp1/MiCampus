@@ -16,27 +16,27 @@ interface User {
 }
 
 const Navbar: React.FC = () => {
-    const { status } = useAppSelector((state) => state.auth)
+    const  {isLogged}  = useAppSelector((state) => state.auth)
     const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false);
     const [userData, setUserData] = useState<User | null>(null);
     const dispatch= useDispatch();
     const navigate= useNavigate();
 
     useEffect(() => {
-        if(status === "authenticated")
+        if( isLogged  == true )
         setIsLoggedIn(true);
         
         const userDataFromStorage = localStorage.getItem('user');
         if (userDataFromStorage) {
             setUserData(JSON.parse(userDataFromStorage));
         }
-    }, [status]);
+    }, [isLogged]);
 
     const logout = () => {
         localStorage.removeItem('user');
         setIsLoggedIn(false);
         setUserData(null);
-        dispatch(notAuthenticated()); 
+        dispatch(notAuthenticated("")); 
         navigate('/');
     };
 
