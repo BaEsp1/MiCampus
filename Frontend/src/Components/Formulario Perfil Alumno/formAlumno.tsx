@@ -1,35 +1,63 @@
-import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
-import { AppDispatch } from '../../Redux/store'; 
-import { saveInfo } from '../../Redux/Actions/userActions';
-import icon from '../../Imagenes/Iconos/user.png';
+import React, { useEffect, useState } from 'react';
 import { toast } from 'react-toastify';
+import { updateUser } from '../../Redux/Actions/userActions';
+
+interface User {
+    name: string;
+    last_name: string;
+    email: string;
+    dni: string;
+    birthdate: string;
+    representante: {
+        relacion: string;
+        name: string;
+        telefono: string;
+        correoElectronico: string;
+    };
+}
 
 const FormPerfilAlumno: React.FC = () => {
-    const dispatch = useDispatch<AppDispatch>();
+    const [userData, setUserData] = useState<User | undefined>();
 
-    const [alumnoInfo, setAlumnoInfo] = useState({
-        nombre: '',
-        tipoDocumento: '',
-        numeroDocumento: '',
-        correoElectronico: ''
-    });
+    useEffect(() => {
+        const userDataFromStorage = localStorage.getItem('user');
+        if (userDataFromStorage) {
+            const userDataParsed = JSON.parse(userDataFromStorage);
+            setUserData(userDataParsed);
+        }
+    }, []);
 
-    const [representanteInfo, setRepresentanteInfo] = useState({
-        relacion: '',
-        nombre: '',
-        telefono: '',
-        correoElectronico: ''
-    });
+    const handleUserDataChange = (key: keyof User, value: string) => {
+        if (userData) {
+            setUserData({ ...userData, [key]: value });
+        }
+    };
 
-    const handleSubmit = (e: React.FormEvent) => {
+    const handleRepresentanteInfoChange = (key: keyof User['representante'], value: string) => {
+        if (userData) {
+            setUserData({
+                ...userData,
+                representante: {
+                    ...userData.representante,
+                    [key]: value
+                }
+            });
+        }
+    };
+
+    const getInitials = (name: string, lastName: string) => {
+        return `${name.charAt(0)}${lastName.charAt(0)}`.toUpperCase();
+    };
+
+    const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
-            if (alumnoInfo.nombre && alumnoInfo.tipoDocumento 
-                && alumnoInfo.numeroDocumento && alumnoInfo.correoElectronico 
-                && representanteInfo.relacion && representanteInfo.nombre 
-                && representanteInfo.telefono && representanteInfo.correoElectronico){
-            dispatch(saveInfo(alumnoInfo, representanteInfo));
-            toast.success('Información guardada correctamente');
+        if (userData?.name && userData.dni && userData.email && userData.representante.relacion && userData.representante.name && userData.representante.telefono && userData.representante.correoElectronico) {
+            try {
+                await updateUser(userData);
+                toast.success('Información guardada correctamente');
+            } catch (error) {
+                toast.error('Error guardando la información');
+            }
         } else {
             toast.error('Por favor completa todos los campos');
         }
@@ -39,116 +67,106 @@ const FormPerfilAlumno: React.FC = () => {
         <form onSubmit={handleSubmit} className="flex flex-wrap justify-around w-[76em] gap-8">
             <div className="flex flex-col gap-8">
                 <h2 className="font-semibold text-xl">Información del alumno</h2>
-
                 <div className="flex flex-col gap-2">
-                    <label>Nombre y Apellido:</label>
-                    <input 
-                        type="text" 
-                        className="border rounded p-2 w-[21em]" 
+                    <label>Nombres:</label>
+                    <input
+                        type="text"
+                        className="border rounded p-2 w-[21em]"
                         style={{ borderColor: '#CCCCCC' }}
-                        value={alumnoInfo.nombre}
-                        onChange={(e) => setAlumnoInfo({ ...alumnoInfo, nombre: e.target.value })}
+                        value={userData?.name || ''}
+                        onChange={(e) => handleUserDataChange('name', e.target.value )}
                     />
                 </div>
-
                 <div className="flex flex-col gap-2">
-                    <label>Tipo de documento:</label>
-                    <select 
-                        className="border rounded p-2" 
+                    <label>Apellidos:</label>
+                    <input
+                        type="text"
+                        className="border rounded p-2 w-[21em]"
                         style={{ borderColor: '#CCCCCC' }}
-                        value={alumnoInfo.tipoDocumento}
-                        onChange={(e) => setAlumnoInfo({ ...alumnoInfo, tipoDocumento: e.target.value })}
-                    >
-                        <option>DNI</option>
-                        <option>DU</option>
-                    </select>
-                </div>
-
-                <div className="flex flex-col gap-2">
-                    <label>Nº de Documento:</label>
-                    <input 
-                        type="text" 
-                        className="border rounded p-2 w-[21em]" 
-                        style={{ borderColor: '#CCCCCC' }}
-                        value={alumnoInfo.numeroDocumento}
-                        onChange={(e) => setAlumnoInfo({ ...alumnoInfo, numeroDocumento: e.target.value })}
+                        value={userData?.last_name || ''}
+                        onChange={(e) => handleUserDataChange('last_name', e.target.value )}
                     />
                 </div>
-
+                <div className="flex flex-col gap-2">
+                    <label>Nº de DNI:</label>
+                    <input
+                        type="text"
+                        className="border rounded p-2 w-[21em]"
+                        style={{ borderColor: '#CCCCCC' }}
+                        value={userData?.dni || ''}
+                        onChange={(e) => handleUserDataChange('dni', e.target.value )}
+                    />
+                </div>
                 <div className="flex flex-col gap-2">
                     <label>Correo electrónico:</label>
-                    <input 
-                        type="text" 
-                        className="border rounded p-2 w-[21em]" 
+                    <input
+                        type="text"
+                        className="border rounded p-2 w-[21em]"
                         style={{ borderColor: '#CCCCCC' }}
-                        value={alumnoInfo.correoElectronico}
-                        onChange={(e) => setAlumnoInfo({ ...alumnoInfo, correoElectronico: e.target.value })}
+                        value={userData?.email || ''}
+                        onChange={(e) => handleUserDataChange('email', e.target.value )}
                     />
                 </div>
             </div>
-
             <div className="flex flex-col gap-8">
                 <h2 className="font-semibold text-xl">Información del representante</h2>
-
                 <div className="flex flex-col gap-2">
                     <label>Relación con el Alumno:</label>
-                    <select 
-                        className="border rounded p-2"  
+                    <select
+                        className="border rounded p-2 w-[21em] h-11"
                         style={{ borderColor: '#CCCCCC' }}
-                        value={representanteInfo.relacion}
-                        onChange={(e) => setRepresentanteInfo({ ...representanteInfo, relacion: e.target.value })}
+                        value={userData?.representante?.relacion || ''}
+                        onChange={(e) => handleRepresentanteInfoChange('relacion', e.target.value )}
                     >
-                        <option>Representante</option>
-                        <option>Madre</option>
-                        <option>Padre</option>
+                        <option value="">Seleccione</option>
+                        <option value="Representante">Representante</option>
+                        <option value="Madre">Madre</option>
+                        <option value="Padre">Padre</option>
                     </select>
                 </div>
-
                 <div className="flex flex-col gap-2">
                     <label>Nombre y Apellido:</label>
-                    <input 
-                        type="text" 
-                        className="border rounded p-2 w-[21em]"  
+                    <input
+                        type="text"
+                        className="border rounded p-2 w-[21em]"
                         style={{ borderColor: '#CCCCCC' }}
-                        value={representanteInfo.nombre}
-                        onChange={(e) => setRepresentanteInfo({ ...representanteInfo, nombre: e.target.value })}
+                        value={userData?.representante?.name || ''}
+                        onChange={(e) => handleRepresentanteInfoChange('name', e.target.value )}
                     />
                 </div>
-
                 <div className="flex flex-col gap-2">
                     <label>Teléfono:</label>
-                    <input 
-                        type="text" 
-                        className="border rounded p-2 w-[21em]"  
+                    <input
+                        type="text"
+                        className="border rounded p-2 w-[21em]"
                         style={{ borderColor: '#CCCCCC' }}
-                        value={representanteInfo.telefono}
-                        onChange={(e) => setRepresentanteInfo({ ...representanteInfo, telefono: e.target.value })}
+                        value={userData?.representante?.telefono || ''}
+                        onChange={(e) => handleRepresentanteInfoChange('telefono', e.target.value )}
                     />
                 </div>
-
                 <div className="flex flex-col gap-2">
                     <label>Correo Electrónico:</label>
-                    <input 
-                        type="text" 
-                        className="border rounded p-2 w-[21em]" 
+                    <input
+                        type="text"
+                        className="border rounded p-2 w-[21em]"
                         style={{ borderColor: '#CCCCCC' }}
-                        value={representanteInfo.correoElectronico}
-                        onChange={(e) => setRepresentanteInfo({ ...representanteInfo, correoElectronico: e.target.value })}
+                        value={userData?.representante?.correoElectronico || ''}
+                        onChange={(e) => handleRepresentanteInfoChange('correoElectronico', e.target.value )}
                     />
                 </div>
             </div>
-
             <div className="flex flex-col gap-8">
                 <h2 className="font-semibold text-xl">Foto de perfil del alumno</h2>
-                <img src={icon} style={{ width: '13em', borderRadius: '10em' }} />
-                <button type="button" className="bg-blue-500 text-white rounded p-2">Subir</button>
+                <div className="w-24 h-24 rounded-full flex items-center justify-center text-white text-3xl" style={{backgroundColor:'rgb(54, 74, 137)' , alignSelf:'center'}}>
+                    {userData ? getInitials(userData.name, userData.last_name) : ''}
+                </div>
+                <button type="button" className="bg-blue-500 text-white rounded p-2 w-[12em]"  style={{alignSelf:'center'}}>Subir</button>
             </div>
-
             <div className="w-full flex justify-center">
                 <button type="submit" style={{ backgroundColor: '#070654' }} className="text-white rounded p-2 w-[21em]">Guardar</button>
             </div>
         </form>
     );
-}
+};
 
 export default FormPerfilAlumno;

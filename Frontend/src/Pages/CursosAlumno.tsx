@@ -8,6 +8,7 @@ const materias: React.FC = () => {
             </div>
 
             <div className="Col2" style={{margin:'2em', width:'fit-content'}}>
+            <h1 className="p-4 font-semibold text-3xl justify-center flex"> Materias</h1>
             <Cards></Cards>
             </div>
         </div>
