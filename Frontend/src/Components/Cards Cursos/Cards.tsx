@@ -64,7 +64,7 @@ const Cards: React.FC = () => {
                     <div style={{ backgroundColor: colors[index % colors.length], height: '5em', borderRadius: '8px 8px 0 0 ' }}>
                     </div>
                     <hr/>
-                    <div style={{ padding: '1em' }}>
+                    <div style={{ padding: '0.5em', height:'5em' ,alignContent: 'center'}}>
                         <h3>{materia}</h3>
                     </div>
                     <hr/>
