@@ -62,12 +62,11 @@ const FormPerfilAlumno: React.FC = () => {
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
-        console.log('Submit event triggered');
         if (userData) {
             const { name, dni, email, representante } = userData;
             if (name && dni && email && representante && representante.relacion && representante.name && representante.telefono && representante.correoElectronico) {
                 try {
-                    console.log('Updating user with data:', userData);
+                    // console.log('Updating user with data:', userData);
                     await updateUser(userData);
                     MySwal.fire(
                         '¡Éxito!',
@@ -75,7 +74,7 @@ const FormPerfilAlumno: React.FC = () => {
                         'success'
                     );
                 } catch (error) {
-                    console.error('Error updating user:', error);
+                    // console.error('Error updating user:', error);
                     MySwal.fire(
                         'Error',
                         'Error guardando la información',
@@ -83,7 +82,7 @@ const FormPerfilAlumno: React.FC = () => {
                     );
                 }
             } else {
-                console.warn('Some fields are missing');
+                // console.warn('Some fields are missing');
                 MySwal.fire(
                     'Error',
                     'Por favor completa todos los campos',
