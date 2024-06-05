@@ -1,17 +1,20 @@
-import { useAppDispatch } from "../Redux/hooks";
+import { useAppDispatch, useAppSelector } from "../Redux/hooks";
 import { AuthSuccessResponse, MiCampusApi } from "../config/api";
-import { authenticated } from "../Redux/auth";
+import { authenticated, checkingAuth, clearErrorMessage, notAuthenticated } from "../Redux/auth";
 import { useNavigate } from "react-router-dom";
+import { AxiosError } from "axios";
 
 export const useAuthStore =() => {
     const navigate = useNavigate()
     const dispatch = useAppDispatch();
+    const {isLoading, isLogged, errorMessage} = useAppSelector(state => state.auth);
 
-    const starLogin = async (credentials: {
+    const startLogin = async (credentials: {
         email: string;
         password: string
     }) => {
         try {
+            dispatch(checkingAuth());
 			const { data } = await MiCampusApi.post<AuthSuccessResponse>(
 				'/auth/login',
 				credentials,
@@ -23,12 +26,20 @@ export const useAuthStore =() => {
 			dispatch(authenticated());
             navigate('/user');
 		} catch (error) {
-			
-			console.log(error)
+            if (error instanceof AxiosError) {
+				dispatch(notAuthenticated('Error de credenciales'));
+			}
+			setTimeout(() => {
+				dispatch(clearErrorMessage());
+			}, 3000);
 		}
     }
 
     return {
-        starLogin
+        isLoading,
+        isLogged,
+        errorMessage,
+
+        startLogin,
     }
 }

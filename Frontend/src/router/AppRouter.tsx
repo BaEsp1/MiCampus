@@ -12,12 +12,12 @@ import VistaPerfilProfesor from '../Pages/VistaInfoProf'
 
 const AppRouter = () => {
 
-    const { status } = useAppSelector((state) => state.auth)
+    const { isLogged } = useAppSelector((state) => state.auth)
 
     return (
         <Routes>
             {
-                status === 'authenticated'
+                isLogged
                     ? (
                         <>
                             <Route path="/user" element={<DashboardUser />} />
