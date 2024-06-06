@@ -1,64 +1,63 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { fetchProfesor } from '../Actions/userActions';
 
-interface AlumnoInfo {
-    nombre: string;
-    tipoDocumento: string;
-    numeroDocumento: string;
-    correoElectronico: string;
-}
-
-interface RepresentanteInfo {
-    relacion: string;
-    nombre: string;
-    telefono: string;
-    correoElectronico: string;
+interface ProfesorData {
+  name: string;
+  lastName: string;
+  email: string;
 }
 
 interface UserState {
-    searchResults: string[];
-    loading: boolean;
-    alumnoInfo: AlumnoInfo;
-    representanteInfo: RepresentanteInfo;
+  searchResults: string[];
+  loading: boolean;
+  DataProf: ProfesorData | null;
 }
 
 const initialState: UserState = {
-    searchResults: [],
-    loading: false,
-    alumnoInfo: {
-        nombre: "",
-        tipoDocumento: "",
-        numeroDocumento: "",
-        correoElectronico: ""
-    },
-    representanteInfo: {
-        relacion: "",
-        nombre: "",
-        telefono: "",
-        correoElectronico: ""
-    },
+  searchResults: [],
+  loading: false,
+  DataProf: null,
 };
 
 const userSlice = createSlice({
-    name: 'user',
-    initialState,
-    reducers: {
-        searchMateriasStart(state) {
-            state.loading = true;
-        },
-        searchMateriasSuccess(state, action: PayloadAction<string[]>) {
-            state.searchResults = action.payload;
-            state.loading = false;
-        },
-        searchMateriasFailure(state) {
-            state.loading = false;
-        },
-        guardarInformacion(state, action: PayloadAction<{ alumnoInfo: AlumnoInfo, representanteInfo: RepresentanteInfo }>) {
-            state.alumnoInfo = action.payload.alumnoInfo;
-            state.representanteInfo = action.payload.representanteInfo;
-        },
+  name: 'user',
+  initialState,
+  reducers: {
+    searchMateriasStart(state) {
+      state.loading = true;
     },
+    searchMateriasSuccess(state, action: PayloadAction<string[]>) {
+      state.searchResults = action.payload;
+      state.loading = false;
+    },
+    searchMateriasFailure(state) {
+      state.loading = false;
+    },
+    loading(state) {
+      state.loading = true;
+    },
+    ready(state) {
+      state.loading = false;
+    },
+    clearDataProf(state) {
+      state.DataProf = null;
+    },
+  },
+  extraReducers: (builder) => {
+    builder
+      .addCase(fetchProfesor.pending, (state) => {
+        state.loading = true;
+      })
+      .addCase(fetchProfesor.fulfilled, (state, action: PayloadAction<ProfesorData>) => {
+        state.DataProf = action.payload;
+        state.loading = false;
+      })
+      .addCase(fetchProfesor.rejected, (state) => {
+        state.loading = false;
+      });
+  },
 });
 
-export const { searchMateriasStart, searchMateriasSuccess, searchMateriasFailure, guardarInformacion } = userSlice.actions;
+export const { clearDataProf,searchMateriasStart, searchMateriasSuccess, searchMateriasFailure, loading, ready} = userSlice.actions;
 
 export default userSlice.reducer;

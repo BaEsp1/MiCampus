@@ -15,7 +15,7 @@ const Asistencias: React.FC = () => {
                 <hr/>
                 <div className='flex flex-row gap-[30em] items-center'>
                 <h2>Materia: {materia}</h2>
-                <h2>Profesor: <Link to={`/profesor/${profesor}`}>{profesor}</Link></h2>
+                <h2>Profesor: <Link to={`/profesor/${profesor}/${materia}`}>{profesor}</Link></h2>
                 </div>
                 <hr/>
                 </div>
