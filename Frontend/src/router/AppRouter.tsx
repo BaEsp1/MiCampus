@@ -9,6 +9,7 @@ import DashboardAlumno from '../Pages/Dashboard-Alumno'
 import PerfilAlumno from '../Pages/Perfil-Alumno'
 import Asistencias from '../Pages/AsistenciasAlumno'
 import VistaPerfilProfesor from '../Pages/VistaInfoProf'
+import GestionNotas from '../Pages/teacher/GestionNotas'
 
 const AppRouter = () => {
 
@@ -28,6 +29,7 @@ const AppRouter = () => {
                             <Route path="/profesor/:profesor/:materia/asistencias" element={<Asistencias />} />
                             <Route path="/profesor/:profesor/:materia/calificaciones" element={<Calificaciones />} />
                             <Route path="/profesor/:profesor" element={<VistaPerfilProfesor />} />
+                            <Route path="/profesor/notas/" element={< GestionNotas />} />
                         </>
                     ) :
                     <>

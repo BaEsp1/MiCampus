@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import './Menu.css';
 import Vector from "../../Imagenes/Iconos/vector.png";
+import { Link } from 'react-router-dom';
 
 const Menu: React.FC = () => {
     const [isOpen, setIsOpen] = useState(false);
@@ -21,20 +22,26 @@ const Menu: React.FC = () => {
                 <div className="bar"></div>
                 <div className="bar"></div>
             </div>
-            <div className={`navbar ${isOpen ? 'open' : ''}`} style={{paddingTop:'1.2em'}}>
-                <a href="/dash">
-                    Menu Principal <img src={Vector} style={{ width:'10px', height: '14px'}}/>
-                </a>
-                <a href="/materias">
-                    Materias <img src={Vector} style={{ width:'10px', height: '14px'}}/>
-                </a>
+            <div className={`navbar ${isOpen ? 'open' : ''}`} style={{ paddingTop: '1.2em' }}>
+                <Link to="/dash">
+                    Menu Principal <img src={Vector} style={{ width: '10px', height: '14px' }} />
+                </Link>
+                <Link to="/materias">
+                    Materias <img src={Vector} style={{ width: '10px', height: '14px' }} />
+                </Link>
+
                 {/* {isSubMenuOpen && (
                     <div className="submenu">
                         <a href="/dash">General</a>
                         <a href="/materias">Materias</a>
                     </div>
                 )} */}
-                <a href="/alumno">Perfil <img src={Vector} style={{ width:'10px', height: '14px'}}/></a>
+                <Link to="/alumno">
+                    Perfil <img src={Vector} style={{ width: '10px', height: '14px' }} />
+                </Link>
+                <Link to="/profesor/notas">
+                    Gestión de notas <img src={Vector} style={{ width: '10px', height: '14px' }} />
+                </Link>
                 {/* <a href="#services">Notas <img src={Vector} style={{ width:'10px', height: '14px'}}/></a> */}
             </div>
         </div>

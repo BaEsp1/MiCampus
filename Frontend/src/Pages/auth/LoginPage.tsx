@@ -1,7 +1,8 @@
 import { useAuthStore } from '../../hooks';
-import './login.css';
 import CheckingLogin from './CheckingLogin';
 import { SubmitHandler, useForm } from 'react-hook-form';
+import { IoMdAlert } from "react-icons/io";
+import './login.css';
 
 type FormFields = {
     email: string;
@@ -11,7 +12,6 @@ type FormFields = {
 const Login: React.FC = () => {
 
     const { isLoading, startLogin, errorMessage } = useAuthStore();
-
 
     const {
         register,
@@ -36,8 +36,7 @@ const Login: React.FC = () => {
                     <section className="form">
                         <div className="form__title">
                             <span>Bienvenido!</span>
-                            <span>a nuestra</span>
-                            <span>pagina web</span>
+                            <span>a MiCampus</span>
                         </div>
                         <form onSubmit={handleSubmit(onSubmit)}>
                             <div className="form__inputGroup">
@@ -55,6 +54,12 @@ const Login: React.FC = () => {
                                     })}
                                 />
                                 <label htmlFor="email" className="form__label">Correo</label>
+                                {errors.email && (
+                                    <div className="form__inputHelper">
+                                        <IoMdAlert size={16} />
+                                        {errors.email.message}
+                                    </div>
+                                )}
                             </div>
                             <div className="form__inputGroup">
                                 <input
@@ -71,6 +76,12 @@ const Login: React.FC = () => {
                                     })}
                                 />
                                 <label htmlFor="password" className="form__label">Contraseña</label>
+                                {errors.password && (
+                                    <div className="form__inputHelper">
+                                        <IoMdAlert size={16} />
+                                        {errors.password.message} </div>
+                                )}
+
                             </div>
                             <button type='submit' className="form__submit" disabled={isLoading}>Iniciar Sesión</button>
 
@@ -84,9 +95,7 @@ const Login: React.FC = () => {
                 </div>
                 <div className='alertsContainer'>
                     {/* Alert */}
-                    {errors.email && (<div className='form__alert'>{errors.email.message} </div>)}
-                    {errors.password && (<div className='form__alert'>{errors.password.message} </div>)}
-                    {errorMessage && (<div className='form__alert'>{errorMessage} </div>)}
+                    {errorMessage && (<div className='form__alertServer'>{errorMessage} </div>)}
                 </div>
                 <div className="fondo__color"></div>
             </main>

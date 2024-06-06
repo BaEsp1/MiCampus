@@ -1,0 +1,47 @@
+:root{
+    --dark-text: #1A3B34;
+}
+.notasContainer{
+    max-width: 1400px;
+    margin: auto;
+    padding: 40px;
+    
+}
+.notaPage-title{
+    font-size: 30px;
+    font-weight: bold;
+    color: var(--dark-text);
+    margin-bottom: 20px;
+}
+.inputs{
+    width: 400px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.inputGroup{
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+.inputGroup label, .label{
+    font-size: 18px;
+    font-weight: bold;
+    color: var(--dark-text);
+}
+.inputGroup select{
+    padding: 12px;
+    font-size: 18px;
+    border-radius: 8px;
+    border: 1px solid gray;
+}
+
+.btn-results{
+    width: 100px;
+    background-color: rgb(5, 5, 66);
+    color: white;
+    border-radius: 4px;
+    font-size: 18px;
+    padding: 8px 12px;
+}
