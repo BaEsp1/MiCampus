@@ -69,7 +69,7 @@ const Navbar: React.FC = () => {
                                     <Menu />
                                     <Link to="/user" className="ml-8"><img src={LogoL} alt="Logo" className='h-[3em]' /></Link>
                                 </div>
-                                <ul className="flex items-center" style={{ width: '17rem' }}>
+                                <ul className="flex items-center" style={{ width: '21em' }}>
                                     <li className="mr-6"><Link to="/user" className="text-black font-semibold">Home</Link></li>
                                     <li className="mr-6">
                                         <Link to="/alumno">
