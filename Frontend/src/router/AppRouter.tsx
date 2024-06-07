@@ -25,7 +25,7 @@ const AppRouter = () => {
                             <Route path="/materias" element={<Materias />} />
                             <Route path="/profesor/:profesor/:materia/asistencias" element={<Asistencias />} />
                             <Route path="/profesor/:profesor/:materia/calificaciones" element={<Calificaciones />} />
-                            <Route path="/profesor/:profesor" element={<VistaPerfilProfesor />} />
+                            <Route path="/profesor/:profesor/:materia" element={<VistaPerfilProfesor />} />
                             <Route path="/profesor/notas/" element={< GestionNotas />} />
                         </>
                     ) :
