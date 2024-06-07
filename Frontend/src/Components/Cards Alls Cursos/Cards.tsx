@@ -1,17 +1,14 @@
 import React, { useState } from 'react';
 import './Cards.css';
 import { Link } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import { RootState } from '../../Redux/store';
 
 const Cards: React.FC = () => {
+    const materias = useSelector((state: RootState) => state.user.materias);
     const [popupOpen, setPopupOpen] = useState(false);
     const [selectedMateria, setSelectedMateria] = useState<string | null>(null);
     const [selectedProfesor, setSelectedProfesor] = useState<string | null>(null);
-
-    const materias = [
-        'Matemáticas', 'Lengua Castellana', 'Historia', 'Biología', 'Geografía', 'Física', 'Química',
-        'Educación Física', 'Arte', 'Música', 'Inglés', 'Tecnología', 'Ciencias Sociales', 'Ciencias Naturales',
-        'Educación Cívica', 'Filosofía', 'Literatura', 'Economía', 'Informática', 'Religión'
-    ];
 
     const colors = [
         "#003366", "#003D80", "#004499", "#004BB3", "#0052CC",
@@ -38,8 +35,11 @@ const Cards: React.FC = () => {
                         <h3 style={{ padding: '1em', color: 'white', fontWeight: 'bold', textShadow: 'initial' }}>{materia}</h3>
                     </div>
                     <hr />
-                    <h2>Profesor:</h2>
-                    <h2 className='font-semibold'>{profesores[index].apellido} {profesores[index].nombre}</h2>
+                    <div className='flex flex-col justify-center items-center h-[5em]'>
+                        <h2>Profesor:</h2>
+                        <h2 className='font-semibold'>{profesores[index].apellido} {profesores[index].nombre}</h2>
+                    </div>
+
                     <div className="overlay">
                         <span className="text-white font-semibold">Seleccionar</span>
                     </div>

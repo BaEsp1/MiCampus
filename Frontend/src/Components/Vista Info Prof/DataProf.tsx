@@ -11,7 +11,7 @@ interface ProfesorProps {
 
 const DataProf: React.FC<ProfesorProps> = ({ profesor, materia }) => {
   const dispatch = useDispatch<AppDispatch>();
-  const profesorData = useSelector((state: RootState) => state.user.DataProf);
+  const profesorData = useSelector((state: RootState) => state.user.dataProf);
   const loading = useSelector((state: RootState) => state.user.loading);
 
   useEffect(() => {
