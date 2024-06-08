@@ -62,7 +62,7 @@ const DataProf: React.FC<ProfesorProps> = ({ profesor, materia }) => {
           </div>
           <div className='flex flex-row gap-2 p-2'>
             <h1 className='font-semibold'>Cumpleaños:</h1>
-            <h1>{selectedProfesor?.birthdate}</h1>
+            <h1>{selectedProfesor?.birthdate || "Sin dato"}</h1>
           </div>
           
         </div>

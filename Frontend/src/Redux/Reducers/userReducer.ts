@@ -1,39 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { fetchProfesor, loadGrade } from '../Actions/userActions';
+import { ProfesorData, GradeData, Course, ResponseData, Nota } from '../Types/userTypes'
 
-interface ProfesorData {
-    id: string;
-    name: string;
-    last_name: string;
-    email: string;
-    birthdate: string | null;
-    dni: string;
-    role: string;
-    gradeId: string | null;
-    isActive: boolean;
-    createdAt: string;
-    updatedAt: string;
-}
-
-interface GradeData {
-    tutor: string;
-    grade: string;
-    section: string;
-    school_year: number;
-}
-
-interface Course {
-    id: string;
-    name: string;
-    idTeacher: string;
-}
-
-interface ResponseData {
-    grade: GradeData;
-    notas: string[];
-    materias: Course[];
-    profesores: ProfesorData[];
-}
 
 interface UserState {
     searchResults: { id: string; name: string; idTeacher: string }[];
@@ -43,13 +11,6 @@ interface UserState {
     grade: GradeData | null;
     materias: Course[] | null;
     profesores: ProfesorData[];
-}
-
-interface Nota {
-    course: string;
-    capacity: string | null;
-    competence: string;
-    note: number;
 }
 
 const initialState: UserState = {
