@@ -28,7 +28,6 @@ const DataProf: React.FC<ProfesorProps> = ({ profesor, materia }) => {
     prof => prof.name.toLowerCase() === nombre && prof.last_name.toLowerCase() === apellido
   );
   
-  console.log(nombre , apellido ,selectedProfesor)
 
   if (!selectedProfesor) {
     return <div>Profesor no encontrado</div>;

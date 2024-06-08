@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
-import { RootState } from '../../Redux/store';
 import { Link } from 'react-router-dom';
+import { selectSearchResults, selectProfesores, selectLoading } from "../../Redux/Selectors/selects"
 
 interface ProfesorData {
     id: string;
@@ -18,13 +18,13 @@ interface ProfesorData {
 }
 
 const Resultados: React.FC = () => {
-    const searchResults = useSelector((state: RootState) => state.user.searchResults);
-    const loading = useSelector((state: RootState) => state.user.loading);
+    const searchResults = useSelector(selectSearchResults);
+    const loading = useSelector(selectLoading);
+    const profesores = useSelector(selectProfesores) as ProfesorData[];
+    
     const [popupOpen, setPopupOpen] = useState(false);
     const [selectedMateria, setSelectedMateria] = useState<string | null>(null);
     const [selectedProfesor, setSelectedProfesor] = useState<string | null>(null);
-
-    const profesores = useSelector((state: RootState) => state.user.profesores as ProfesorData[]);
 
     if (loading) {
         return <div>Cargando...</div>;
@@ -84,7 +84,7 @@ const Resultados: React.FC = () => {
                     )}
                 </>
             ) : (
-                <div>No se encontraron resultados</div>
+                <div><p>No se encontraron resultados</p></div>
             )}
         </div>
     );

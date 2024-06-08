@@ -35,7 +35,7 @@ const DashboardAlumno: React.FC = () => {
         { loading 
             ? (<div className='flex justify-center flex-col items-center p-[14em]'>
                 <img src={Loader} className='h-[13em] w-[13em]'/>
-                <h1 className='text-3xl'>Cargando ...</h1>
+                <h1 className='text-3xl'>Cargando</h1>
                 </div>
                 )
             : (<div className="flex flex-row">

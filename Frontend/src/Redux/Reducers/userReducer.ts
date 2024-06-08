@@ -39,10 +39,17 @@ interface UserState {
     searchResults: { id: string; name: string; idTeacher: string }[];
     loading: boolean;
     dataProf: ProfesorData | null;
-    notas: string[];
+    notas: Nota[];
     grade: GradeData | null;
     materias: Course[] | null;
     profesores: ProfesorData[];
+}
+
+interface Nota {
+    course: string;
+    capacity: string | null;
+    competence: string;
+    note: number;
 }
 
 const initialState: UserState = {
@@ -89,12 +96,16 @@ const userSlice = createSlice({
                 state.loading = true;
             })
             .addCase(loadGrade.fulfilled, (state, action: PayloadAction<ResponseData>) => {
-                state.notas = action.payload.notas;
+                state.notas = action.payload.notas.map(notaString => {
+                    const nota: Nota = typeof notaString === 'string' ? JSON.parse(notaString) : notaString;
+                    return nota;
+                });
                 state.grade = action.payload.grade;
                 state.materias = action.payload.materias;
                 state.profesores = action.payload.profesores;
                 state.loading = false;
             })
+
             .addCase(loadGrade.rejected, (state) => {
                 state.loading = false;
             });

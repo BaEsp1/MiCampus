@@ -31,7 +31,6 @@ const Cards: React.FC = () => {
 
     const materias = useSelector((state: RootState) => state.user.materias);
     const profesores = useSelector((state: RootState) => state.user.profesores as unknown as ProfesorData[]);
-    console.log(profesores)
 
     const colors = [
         "#003366", "#003D80", "#004499", "#004BB3", "#0052CC",
