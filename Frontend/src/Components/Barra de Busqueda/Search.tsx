@@ -9,7 +9,7 @@ import Lupa from "../../Imagenes/Iconos/lupa.png";
 const SearchBar: React.FC = () => {
     const [query, setQuery] = useState('');
     const dispatch = useDispatch<AppDispatch>();
-    const materias = useSelector((state: RootState) => state.user.materias)
+    const materias = useSelector((state: RootState) => state.user.materias ?? []);
     const searchResults = useSelector((state: RootState) => state.user.searchResults)
 
     const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -17,8 +17,8 @@ const SearchBar: React.FC = () => {
     };
 
     const handleSearch = () => {
-        const results = materias.filter(materia =>
-            materia.toLowerCase().includes(query.toLowerCase())
+        const results = materias?.filter(materia =>
+            materia.name.toLowerCase().includes(query.toLowerCase())
         );
         dispatch(searchMaterias(results));
     };

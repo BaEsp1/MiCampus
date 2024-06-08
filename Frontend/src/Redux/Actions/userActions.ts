@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { createAsyncThunk} from '@reduxjs/toolkit';
+import { createAsyncThunk } from '@reduxjs/toolkit';
 
 interface User {
     name: string;
@@ -26,6 +26,7 @@ interface GradeData {
 interface ResponseData {
     grade: GradeData;
     notas: string[];
+    materias: GradeDetail;
 }
 
 interface GradesResponse {
@@ -59,6 +60,7 @@ interface GradeDetail {
     courses: {
         id: string;
         name: string;
+        idTeacher: string;
     }[];
     students: {
         id: string;
@@ -66,6 +68,20 @@ interface GradeDetail {
         last_name: string;
         email: string;
     }[];
+}
+
+interface Teacher {
+    id: string;
+    name: string;
+    last_name: string;
+    email: string;
+    birthdate: string | null;
+    dni: string;
+    role: string;
+    gradeId: string | null;
+    isActive: boolean;
+    createdAt: string;
+    updatedAt: string;
 }
 
 const API_URL = 'https://nest-institucion-educativa.onrender.com/api';
@@ -96,11 +112,9 @@ export const loadGrade = createAsyncThunk(
     'user/loadGrade',
     async (userId: string, thunkAPI) => {
         try {
-            // Fetch student data
             const response = await axios.get<ResponseData>(`${API_URL}/students/${userId}`);
             const { grade } = response.data;
 
-            // Fetch all grades to find the matching one
             const gradesResponse = await axios.get<GradesResponse>(`${API_URL}/grades`);
             const grades = gradesResponse.data.grades;
             const matchingGrade = grades.find(g => g.grade === grade.grade && g.section === grade.section);
@@ -109,14 +123,17 @@ export const loadGrade = createAsyncThunk(
                 throw new Error('Grado no encontrado');
             }
 
-            // Fetch detailed information for the matching grade
             const gradeDetailResponse = await axios.get<GradeDetail>(`${API_URL}/grades/${matchingGrade.id}`);
-            const materias = gradeDetailResponse.data.courses.map(course => course.name);
+            const materias = gradeDetailResponse.data.courses;
+
+            const allteachers = await axios.get<{ teachers: Teacher[] }>(`${API_URL}/teachers`);
+            const profesores = allteachers.data.teachers;
 
             return {
                 notas: response.data.notas,
                 grade: grade,
-                materias: materias
+                materias: materias,
+                profesores:profesores,
             };
         } catch (error) {
             return thunkAPI.rejectWithValue('Error al buscar datos');
@@ -124,9 +141,9 @@ export const loadGrade = createAsyncThunk(
     }
 );
 
-export const searchMaterias = (results: string[] | null) => {
-  return {
-      type: 'user/searchMaterias',
-      payload: results
-  };
+export const searchMaterias = (results: { id: string; name: string; idTeacher: string }[] | null) => {
+    return {
+        type: 'user/searchMaterias',
+        payload: results
+    };
 };

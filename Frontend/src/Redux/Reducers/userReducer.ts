@@ -1,11 +1,18 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-
 import { fetchProfesor, loadGrade } from '../Actions/userActions';
 
 interface ProfesorData {
+    id: string;
     name: string;
-    lastName: string;
+    last_name: string;
     email: string;
+    birthdate: string | null;
+    dni: string;
+    role: string;
+    gradeId: string | null;
+    isActive: boolean;
+    createdAt: string;
+    updatedAt: string;
 }
 
 interface GradeData {
@@ -15,19 +22,27 @@ interface GradeData {
     school_year: number;
 }
 
+interface Course {
+    id: string;
+    name: string;
+    idTeacher: string;
+}
+
 interface ResponseData {
     grade: GradeData;
     notas: string[];
-    materias: string[];
+    materias: Course[];
+    profesores: ProfesorData[];
 }
 
 interface UserState {
-    searchResults: string[];
+    searchResults: { id: string; name: string; idTeacher: string }[];
     loading: boolean;
     dataProf: ProfesorData | null;
     notas: string[];
     grade: GradeData | null;
-    materias: string[];
+    materias: Course[] | null;
+    profesores: ProfesorData[];
 }
 
 const initialState: UserState = {
@@ -36,17 +51,18 @@ const initialState: UserState = {
     dataProf: null,
     notas: [],
     grade: null,
-    materias: []
+    materias: null,
+    profesores: [],
 };
 
 const userSlice = createSlice({
     name: 'user',
     initialState,
     reducers: {
-        searchMaterias(state, action: PayloadAction<string[]>) {
-          state.searchResults = action.payload;
-          state.loading = false;
-      },
+        searchMaterias(state, action: PayloadAction<{ id: string; name: string; idTeacher: string }[] | null>) {
+            state.searchResults = action.payload || [];
+            state.loading = false;
+        },
         loading(state) {
             state.loading = true;
         },
@@ -76,6 +92,7 @@ const userSlice = createSlice({
                 state.notas = action.payload.notas;
                 state.grade = action.payload.grade;
                 state.materias = action.payload.materias;
+                state.profesores = action.payload.profesores;
                 state.loading = false;
             })
             .addCase(loadGrade.rejected, (state) => {
