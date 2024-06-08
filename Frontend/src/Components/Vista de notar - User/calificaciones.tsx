@@ -1,5 +1,6 @@
-import React, { useEffect} from "react";
-import { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
+import { RootState } from "../../Redux/store";
 
 interface ProfesorProps {
     profesor: string;
@@ -10,46 +11,37 @@ interface User {
     name: string;
     last_name: string;
     id: string;
-    notes: []
+    notes: number[];
 }
 
+interface Nota {
+    course: string;
+    competence: string;
+    note: number;
+    capacity: string;
+}
 
 const Notas: React.FC<ProfesorProps> = ({ profesor, materia }) => {
     const [userData, setUserData] = useState<User | null>(null);
+    const notas = useSelector((state: RootState) => state.user.notas as Nota[]);
 
-    const Calificaciones = [
-        {
-            competence: "Fracciones",
-            note: "3",
-            observacion: "-",
-            capacity: null,
-        },
-        {
-            competence: "Multiplos",
-            note: "7",
-            observacion: "-",
-            capacity: null,
-        },
-        {
-            competence: "Ecuaciones",
-            note: "8",
-            observacion: "-",
-            capacity: null,
-        },
-        {
-            competence: "Inecuaciones",
-            note: "1",
-            observacion: "-",
-            capacity: null,
-        }
-    ];
+    const calificaciones = notas.filter(n => n.course === materia);
 
-    useEffect(() =>{
+    useEffect(() => {
         const userDataFromStorage = localStorage.getItem('user');
         if (userDataFromStorage) {
             setUserData(JSON.parse(userDataFromStorage));
         }
-    },[userData]);
+    }, []);
+
+    const calcularPromedio = (calificaciones: Nota[]) => {
+        if (calificaciones.length === 0) return 0;
+        const suma = calificaciones.reduce((acc, curr) => acc + curr.note, 0);
+        return suma / calificaciones.length;
+    };
+
+    const promedio = calcularPromedio(calificaciones);
+    const estado = promedio > 60 ? "Aprobado" : "Desaprobado";
 
     return (
         <div>
@@ -60,8 +52,8 @@ const Notas: React.FC<ProfesorProps> = ({ profesor, materia }) => {
                     Nombre y Apellido: <p style={{fontWeight:'bold'}}> {userData?.name} {userData?.last_name}</p>
                 </div>
                 <div className="flex flex-row justify-center gap-[16em]" style={{ background: 'rgb(54, 74, 137)' }}>
-                    <div className="text-white font-semibold flex gap-2">Estado actual: <p>desaprobado</p></div>
-                    <div className="text-white font-semibold flex gap-2">Promedio total: <p>5</p></div>
+                    <div className="text-white font-semibold flex gap-2">Estado actual: <p>{estado}</p></div>
+                    <div className="text-white font-semibold flex gap-2">Promedio total: <p>{promedio.toFixed(2)}</p></div>
                 </div>
             </div>
             <hr />
@@ -72,13 +64,13 @@ const Notas: React.FC<ProfesorProps> = ({ profesor, materia }) => {
                 <div className="bg-blue-500 text-white font-semibold p-1 text-center">Recuperatorio</div>
                 <div className="bg-blue-500 text-white font-semibold p-1 text-center">Observaciones</div>
                 {/* Datos */}
-                {Calificaciones.length > 0 ? (
-                    Calificaciones.map((calificacion, index) => (
+                {calificaciones.length > 0 ? (
+                    calificaciones.map((calificacion, index) => (
                         <React.Fragment key={index}>
                             <div className="p-1 font-bold text-center" style={{ border: 'solid 2px #cccc' }}>{calificacion.competence}</div>
                             <div className="p-1 font-bold text-center" style={{ border: 'solid 2px #cccc' }}>{calificacion.note}</div>
-                            <div className="p-1 font-bold text-center" style={{ border: 'solid 2px #cccc' }}>{calificacion.capacity}</div>
-                            <div className="p-1 font-bold text-center" style={{ border: 'solid 2px #cccc' }}>{calificacion.observacion}</div>
+                            <div className="p-1 font-bold text-center" style={{ border: 'solid 2px #cccc' }}>{calificacion.capacity === "" ? <p>No</p> : <p>Si</p>}</div>
+                            <div className="p-1 font-bold text-center" style={{ border: 'solid 2px #cccc' }}>Ninguna</div>
                         </React.Fragment>
                     ))
                 ) : (
@@ -87,6 +79,6 @@ const Notas: React.FC<ProfesorProps> = ({ profesor, materia }) => {
             </div>
         </div>
     );
-}
+};
 
 export default Notas;

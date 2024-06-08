@@ -1,33 +1,16 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-
 import { fetchProfesor, loadGrade } from '../Actions/userActions';
+import { ProfesorData, GradeData, Course, ResponseData, Nota } from '../Types/userTypes'
 
-interface ProfesorData {
-    name: string;
-    lastName: string;
-    email: string;
-}
-
-interface GradeData {
-    tutor: string;
-    grade: string;
-    section: string;
-    school_year: number;
-}
-
-interface ResponseData {
-    grade: GradeData;
-    notas: string[];
-    materias: string[];
-}
 
 interface UserState {
-    searchResults: string[];
+    searchResults: { id: string; name: string; idTeacher: string }[];
     loading: boolean;
     dataProf: ProfesorData | null;
-    notas: string[];
+    notas: Nota[];
     grade: GradeData | null;
-    materias: string[];
+    materias: Course[] | null;
+    profesores: ProfesorData[];
 }
 
 const initialState: UserState = {
@@ -36,17 +19,18 @@ const initialState: UserState = {
     dataProf: null,
     notas: [],
     grade: null,
-    materias: []
+    materias: null,
+    profesores: [],
 };
 
 const userSlice = createSlice({
     name: 'user',
     initialState,
     reducers: {
-        searchMaterias(state, action: PayloadAction<string[]>) {
-          state.searchResults = action.payload;
-          state.loading = false;
-      },
+        searchMaterias(state, action: PayloadAction<{ id: string; name: string; idTeacher: string }[] | null>) {
+            state.searchResults = action.payload || [];
+            state.loading = false;
+        },
         loading(state) {
             state.loading = true;
         },
@@ -73,11 +57,16 @@ const userSlice = createSlice({
                 state.loading = true;
             })
             .addCase(loadGrade.fulfilled, (state, action: PayloadAction<ResponseData>) => {
-                state.notas = action.payload.notas;
+                state.notas = action.payload.notas.map(notaString => {
+                    const nota: Nota = typeof notaString === 'string' ? JSON.parse(notaString) : notaString;
+                    return nota;
+                });
                 state.grade = action.payload.grade;
                 state.materias = action.payload.materias;
+                state.profesores = action.payload.profesores;
                 state.loading = false;
             })
+
             .addCase(loadGrade.rejected, (state) => {
                 state.loading = false;
             });

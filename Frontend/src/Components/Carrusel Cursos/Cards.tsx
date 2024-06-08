@@ -7,16 +7,25 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from 'react-slick';
 
+interface Materia {
+    id: string;
+    name: string;
+    idTeacher: string;
+}
+
+interface Profesor {
+    id: string;
+    name: string;
+    last_name: string;
+}
+
 const Cards: React.FC = () => {
     const [popupOpen, setPopupOpen] = useState(false);
     const [selectedMateria, setSelectedMateria] = useState<string | null>(null);
     const [selectedProfesor, setSelectedProfesor] = useState<string | null>(null);
 
-    const materias = useSelector((state: RootState) => state.user.materias);
-    // const profesores = useSelector((state: RootState) => state.profesores);
-    const profesores = [
-        { nombre: 'María', apellido: 'González' }, { nombre: 'Juan', apellido: 'Martínez' }, { nombre: 'Laura', apellido: 'Rodríguez' }, { nombre: 'Carlos', apellido: 'López' }, { nombre: 'Ana', apellido: 'Pérez' }, { nombre: 'Pedro', apellido: 'García' }, { nombre: 'Lucía', apellido: 'Fernández' }, { nombre: 'Diego', apellido: 'Sánchez' }, { nombre: 'Sara', apellido: 'Romero' }, { nombre: 'Pablo', apellido: 'Hernández' }, { nombre: 'Elena', apellido: 'Gómez' }, { nombre: 'Javier', apellido: 'Díaz' }, { nombre: 'Marta', apellido: 'Vargas' }, { nombre: 'Ricardo', apellido: 'Moreno' }, { nombre: 'Carmen', apellido: 'Jiménez' }, { nombre: 'Alejandro', apellido: 'Ruíz' }, { nombre: 'Isabel', apellido: 'Ortega' }, { nombre: 'Luis', apellido: 'Navarro' }, { nombre: 'Silvia', apellido: 'Molina' }, { nombre: 'Raúl', apellido: 'Santos' }
-    ];
+    const materias = useSelector((state: RootState) => state.user.materias as unknown as Materia[]);
+    const profesores = useSelector((state: RootState) => state.user.profesores as unknown as Profesor[]);
 
     const colors = [
         "#003366", "#003D80", "#004499", "#004BB3", "#0052CC",
@@ -32,7 +41,7 @@ const Cards: React.FC = () => {
     };
 
     const settings = {
-        arrow:true,
+        arrow: true,
         dots: false,
         infinite: true,
         speed: 500,
@@ -43,24 +52,30 @@ const Cards: React.FC = () => {
     return (
         <div className="cards-container-dash">
             <Slider {...settings}>
-                {materias.map((materia: string, index: number) => (
-                    <div className="card-wrapper" key={index}>
-                        <div className="card" onClick={() => handleCardClick(materia, profesores[index].nombre, profesores[index].apellido)}>
-                            <div className="card-header" style={{ backgroundColor: colors[index % colors.length] }}>
-                            </div>
-                            <hr />
-                            <div className="card-body">
-                                <h3 className='font-semibold'>{materia}</h3>
-                            </div>
-                            <hr />
-                            <h2>Profesor:</h2>
-                            <h2 className='font-semibold'>{profesores[index].nombre} {profesores[index].apellido}</h2>
-                            <div className="overlay">
-                                <span className="text-white font-semibold">VER CURSO</span>
+                {materias?.map((materia: Materia, index: number) => {
+                    const profesor = profesores.find(prof => prof.id === materia.idTeacher);
+                    const profesorNombre = profesor ? profesor.name : "Desconocido";
+                    const profesorApellido = profesor ? profesor.last_name : "Desconocido";
+
+                    return (
+                        <div className="card-wrapper" key={materia.id}>
+                            <div className="card" onClick={() => handleCardClick(materia.name, profesorNombre, profesorApellido)}>
+                                <div className="card-header" style={{ backgroundColor: colors[index % colors.length] }}>
+                                </div>
+                                <hr />
+                                <div className="card-body">
+                                    <h3 className='font-semibold'>{materia.name}</h3>
+                                </div>
+                                <hr />
+                                <h2>Profesor:</h2>
+                                <h2 className='font-semibold'>{profesorNombre} {profesorApellido}</h2>
+                                <div className="overlay">
+                                    <span className="text-white font-semibold">VER CURSO</span>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                ))}
+                    );
+                })}
             </Slider>
             {popupOpen && (
                 <div className="popup fixed inset-0 flex items-center justify-center">
