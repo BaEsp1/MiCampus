@@ -54,21 +54,19 @@ La idea de Mi Campus nació del deseo de contribuir con pequeñas instituciones 
 
 1. Clona el repositorio:
 
-   ```bash
-   git clone https://github.com/BaEsp1/MiCampus.git
+```bash
+git clone https://github.com/BaEsp1/MiCampus.git
    ```
 
 2. Navega al directorio del proyecto:
 
- ```bash
-    Copiar código
+```bash
     cd mi-campus
 ```
 
 3. Instala las dependencias del frontend y del backend:
 
- ```bash
-Copiar código
+```bash
 cd frontend
 npm install
 cd ../backend
@@ -77,16 +75,11 @@ npm install
 4. Configura las variables de entorno en los archivos .env para PostgreSQL y otros servicios necesarios.
 
 5. Corre el servidor backend:
-
- ```bash
-Copiar código
+```bash
 npm run start:dev
-
 ```
 6. Corre el frontend:
-
- ```bash
-Copiar código
+```bash
 cd ../frontend
 npm run dev
 ```
