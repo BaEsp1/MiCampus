@@ -10,7 +10,7 @@ export interface User {
     email:     string;
     birthdate: null;
     dni:       string;
-    role:      string;
+    role:      'STUDENT' | 'TEACHER';
     id_grade:  null;
     isActive:  boolean;
     createdAt: Date;

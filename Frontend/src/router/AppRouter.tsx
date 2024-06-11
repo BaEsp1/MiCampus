@@ -9,10 +9,17 @@ import PerfilAlumno from '../Pages/Perfil-Alumno'
 import Asistencias from '../Pages/AsistenciasAlumno'
 import VistaPerfilProfesor from '../Pages/VistaInfoProf'
 import GestionNotas from '../Pages/teacher/GestionNotas'
+import { useEffect } from 'react'
+import { useAuthStore } from '../hooks'
 
 const AppRouter = () => {
 
-    const { isLogged } = useAppSelector((state) => state.auth)
+    const { isLogged } = useAppSelector((state) => state.auth);
+    const {checkAuthToken} = useAuthStore();
+
+    useEffect(() => {
+        checkAuthToken();
+    },[])
 
     return (
         <Routes>
