@@ -1,13 +1,28 @@
 import { useAppDispatch, useAppSelector } from "../Redux/hooks";
-import { AuthSuccessResponse, MiCampusApi } from "../config/api";
+import { AuthSuccessResponse, MiCampusApi, User } from "../config/api";
 import { authenticated, checkingAuth, clearErrorMessage, notAuthenticated } from "../Redux/auth";
 import { useNavigate } from "react-router-dom";
 import { AxiosError } from "axios";
+import { clearUserData, setUserData } from "../Redux/Reducers/userReducer";
 
 export const useAuthStore = () => {
     const navigate = useNavigate();
     const dispatch = useAppDispatch();
-    const {isLoading, isLogged, errorMessage} = useAppSelector(state => state.auth);
+    const { isLoading, isLogged, errorMessage } = useAppSelector(state => state.auth);
+
+    const checkAuthToken = () => {
+        const token = localStorage.getItem('x-token');
+        const user: User = JSON.parse(localStorage.getItem('user') ?? '{}');
+
+        if (token && user.id) {
+            localStorage.setItem('x-token', token);
+            localStorage.setItem('user', JSON.stringify(user));
+
+            dispatch(setUserData(user));
+            dispatch(authenticated());
+            navigate('/user')
+        }
+    }
 
     const startLogin = async (credentials: {
         email: string;
@@ -15,26 +30,33 @@ export const useAuthStore = () => {
     }) => {
         try {
             dispatch(checkingAuth());
-			const { data } = await MiCampusApi.post<AuthSuccessResponse>(
-				'/auth/login',
-				credentials,
-			);
+            const { data } = await MiCampusApi.post<AuthSuccessResponse>(
+                '/auth/login',
+                credentials,
+            );
 
             const { token, user } = data;
             localStorage.setItem('x-token', token);
             localStorage.setItem('user', JSON.stringify(user));
 
+            dispatch(setUserData(user));
             dispatch(authenticated());
             navigate('/user');
 
-		} catch (error) {
+        } catch (error) {
             if (error instanceof AxiosError) {
-				dispatch(notAuthenticated('Error de credenciales'));
-			}
-			setTimeout(() => {
-				dispatch(clearErrorMessage());
-			}, 3000);
-		}
+                dispatch(notAuthenticated('Error de credenciales'));
+            }
+            setTimeout(() => {
+                dispatch(clearErrorMessage());
+            }, 3000);
+        }
+    }
+
+    const startLogout = () => {
+        dispatch(clearUserData());
+        dispatch(notAuthenticated(''));
+        navigate('/');
     }
 
     return {
@@ -43,6 +65,8 @@ export const useAuthStore = () => {
         errorMessage,
 
         startLogin,
+        startLogout,
+        checkAuthToken
     }
 }
 

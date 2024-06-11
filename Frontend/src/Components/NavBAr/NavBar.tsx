@@ -20,7 +20,7 @@ interface User {
 }
 
 const Navbar: React.FC = () => {
-    const { isLogged } = useAppSelector((state) => state.auth);
+    const { isLogged} = useAppSelector((state) => state.auth);
     const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false);
     const [userData, setUserData] = useState<User | null>(null);
     const dispatch = useDispatch();

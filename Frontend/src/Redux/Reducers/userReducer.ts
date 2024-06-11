@@ -1,5 +1,7 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { fetchProfesor } from '../Actions/userActions';
+import { User } from "../../config/api";
+
 
 interface ProfesorData {
   name: string;
@@ -8,12 +10,14 @@ interface ProfesorData {
 }
 
 interface UserState {
+  user: User | null;
   searchResults: string[];
   loading: boolean;
   DataProf: ProfesorData | null;
 }
 
 const initialState: UserState = {
+  user: null,
   searchResults: [],
   loading: false,
   DataProf: null,
@@ -23,6 +27,12 @@ const userSlice = createSlice({
   name: 'user',
   initialState,
   reducers: {
+    setUserData: (state, action: PayloadAction<User>) => {
+      state.user = action.payload;
+    },
+    clearUserData: (state) => {
+      state.user == null;
+    },
     searchMateriasStart(state) {
       state.loading = true;
     },
@@ -58,6 +68,6 @@ const userSlice = createSlice({
   },
 });
 
-export const { clearDataProf,searchMateriasStart, searchMateriasSuccess, searchMateriasFailure, loading, ready} = userSlice.actions;
+export const { setUserData, clearUserData, clearDataProf,searchMateriasStart, searchMateriasSuccess, searchMateriasFailure, loading, ready} = userSlice.actions;
 
 export default userSlice.reducer;
