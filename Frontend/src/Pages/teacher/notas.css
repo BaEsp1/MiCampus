@@ -45,3 +45,16 @@
     font-size: 18px;
     padding: 8px 12px;
 }
+.table{
+}
+.table__labels{
+    @apply grid grid-cols-4 bg-[#118DF0] text-white font-bold;
+    }
+
+.table__row{
+    @apply grid grid-cols-4 border-b-[1px] border-b-gray-900;
+}
+.table__cell{
+    @apply py-6 text-center;
+    font-size: 18px;
+}

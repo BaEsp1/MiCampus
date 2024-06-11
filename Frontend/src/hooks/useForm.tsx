@@ -11,6 +11,14 @@ export const useForm = <T extends object>(initialForm: T) => {
         });
     };
 
+    const onSelectChange = ({target}: ChangeEvent<HTMLSelectElement>) => {
+        const { name, value } = target;
+        setFormState({
+            ...formState,
+            [name]: value,
+        });
+    }
+
     const onResetForm = () => {
         setFormState(initialForm);
     };
@@ -19,6 +27,7 @@ export const useForm = <T extends object>(initialForm: T) => {
         ...formState,
         formState,
         onInputChange,
+        onSelectChange,
         onResetForm,
     };
 };
