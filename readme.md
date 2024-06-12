@@ -88,7 +88,7 @@ La idea de Mi Campus nació del deseo de contribuir con pequeñas instituciones 
 
 ## Diseño UX/UI
 <br/>
-El diseño de la Web App , se realizó en Figma: <br/>
+El diseño de Mi Campus, se realizó en Figma: <br/>
 <a href="https://www.figma.com/design/iNBQBSb08kgN70DE5cfpAx/Untitled?node-id=0-1&t=xblrtJUiQn1K4Wcd-1" > <img src="Frontend\src\Imagenes\screens\FigmaScreen.png"  width="300"/></a>
 
 ## Análisis de QA
@@ -100,8 +100,13 @@ El diseño de la Web App , se realizó en Figma: <br/>
 |  Rol desarrollado     | Nombre y Apellido     |  Contacto/Redes       |
 |-----------------------|----------------------|----------------------|
 | Diseñadora UX/UI     |Jessica Rodriguez      |    [![LinkedIn](https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/jessi-rod-vex)|
-| Tester QA         | Hernan Esquivel   |  [![GitHub](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)](https://github.com/hernan97carp)[![LinkedIn](https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/hernan-esquivel/) |
-| Proyect Manager     | Carlos Mejia         |[![GitHub](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)](https://github.com/CarlosMejia01)[![LinkedIn](https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/carlos-alberto-mejia-perez-683600206)|
-| Backend           | Diego Garay Culla        |[![GitHub](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)](https://github.com/Dieguidev)[![LinkedIn](https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/tu-perfil)|
-| Frontend            | Jesus Valencia   |[![GitHub](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)](https://github.com/g-susvs)[![LinkedIn](https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/jesus-guillermo-valencia-salvador)|
-| Frontend       | Bárbara Espinola       |[![GitHub](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)](https://github.com/BaEsp1)[![LinkedIn](https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/baesp/)|
+| Tester QA         | Hernan Esquivel   |  [![GitHub](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)](https://github.com/hernan97carp) [![LinkedIn](https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/hernan-esquivel/) |
+| Proyect Manager     | Carlos Mejia         |[![GitHub](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)](https://github.com/CarlosMejia01) [![LinkedIn](https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/carlos-alberto-mejia-perez-683600206)|
+| Backend           | Diego Garay Cullas        |[![GitHub](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)](https://github.com/Dieguidev) [![LinkedIn](https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/tu-perfil)|
+| Frontend            | Jesus Valencia   |[![GitHub](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)](https://github.com/g-susvs) [![LinkedIn](https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/jesus-guillermo-valencia-salvador)|
+| Frontend       | Bárbara Espinola       |[![GitHub](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)](https://github.com/BaEsp1) [![LinkedIn](https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/baesp/)|
+
+## Agradecimientos
+
+<p>Gracias por leer todo el README ♥</p>
+<p>Apreciamos tus comentarios y contribuciones para mejorar esta aplicación. Si tienes alguna pregunta o sugerencia, no dudes en contactarnos.</p>
