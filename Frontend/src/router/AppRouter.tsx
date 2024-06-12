@@ -11,6 +11,7 @@ import VistaPerfilProfesor from '../Pages/VistaInfoProf'
 import GestionNotas from '../Pages/teacher/GestionNotas'
 import { useEffect } from 'react'
 import { useAuthStore } from '../hooks'
+import CoursesTeacher from '../Pages/teacher/CoursesTeacher'
 
 const AppRouter = () => {
 
@@ -33,6 +34,7 @@ const AppRouter = () => {
                             <Route path="/profesor/:profesor/:materia/asistencias" element={<Asistencias />} />
                             <Route path="/profesor/:profesor/:materia/calificaciones" element={<Calificaciones />} />
                             <Route path="/profesor/:profesor/:materia" element={<VistaPerfilProfesor />} />
+                            <Route path="/profesor/materias" element={<CoursesTeacher />} />
                             <Route path="/profesor/notas/" element={< GestionNotas />} />
                         </>
                     ) :
