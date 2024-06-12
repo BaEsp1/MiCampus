@@ -34,7 +34,7 @@ const Carousel: React.FC = () => {
                     <img src={Bank} alt="Niños concentrados" />
                     <div className="info-box" >
                         <h1>HORARIOS</h1>
-                        <h3>
+                        <h3 className='text-sm'>
                             Podrás visualizar los horarios de cada alumno.
                             Además, podrás gestionar los horarios de clases y actividades extracurriculares, facilitando la organización y la comunicación .
                         </h3>
@@ -44,7 +44,7 @@ const Carousel: React.FC = () => {
                     <img src={Hands} alt="Asistencia" />
                     <div className="info-box">
                         <h1>ASISTENCIAS</h1>
-                        <h3>
+                        <h3  className='text-sm'>
                             Podrás observar un registro detallado de las asistencias de cada alumno. 
                             Conocer rápidamente su estado , y mantener informados a los padres sobre su asistencia.
                         </h3>
@@ -54,7 +54,7 @@ const Carousel: React.FC = () => {
                     <img src={Reunion} alt="Notas" />
                     <div className="info-box">
                         <h1>CALIFICACIONES</h1>
-                        <h3>
+                        <h3  className='text-sm'>
                             Consulta las calificaciones de forma rápida y sencilla. 
                             Con esta herramienta, podrás hacer un seguimiento detallado del progreso académico de cada estudiante.
                         </h3>
@@ -64,7 +64,7 @@ const Carousel: React.FC = () => {
                     <img  src={Logo} alt="Logo App"  style={{background:"white"}}/>
                     <div className="info-box">
                         <h1>MI CAMPUS</h1>
-                        <h3>
+                        <h3  className='text-sm'>
                             Descubre más sobre nuestra aplicación y cómo puede facilitar tu trabajo. 
                             Podrás gestionar de forma eficiente las tareas administrativas de tu institución.
                         </h3>

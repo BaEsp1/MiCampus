@@ -13,8 +13,8 @@
 }
 
 .carousel-item {
-    width: 300px;
-    height: 328px;
+    width: 25em;
+    height: 20em;
     text-align: center;
     opacity: 0.7;
     transform: scale(0.8);
@@ -27,14 +27,14 @@
 }
 
 .carousel-item img {
-    width: 300px; 
-    height: 160px;
+    width: 17em; 
+    height: 9em;
     object-fit: cover;
 }
 
 .info-box {
-    width: 300px; 
-    height: 160px;
+    width: 17em; 
+    height: 10em;
     background: rgba(255, 255, 255, 0.8);
     padding: 10px;
     box-sizing: border-box; 

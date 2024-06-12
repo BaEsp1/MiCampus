@@ -52,9 +52,18 @@
     justify-content: space-between;
     font-weight: 500;
     align-items: center;
-    font-size: 24px;
+    font-size: 1.4em;
 }
 
 .navbar a:hover {
     background-color:#D9D9D9;
+}
+
+.submenu {
+    padding-left: 20px;
+}
+
+.submenu a {
+    display: block;
+    margin-top: 10px;
 }
