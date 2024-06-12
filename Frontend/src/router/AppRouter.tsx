@@ -18,11 +18,12 @@ import DashboarTeacher from '../Pages/teacher/DashboardTeacher'
 const AppRouter = () => {
 
     const { isLogged } = useAppSelector((state) => state.auth);
-    const {checkAuthToken} = useAuthStore();
+    const { user } = useAppSelector((state) => state.user);
+    const { checkAuthToken } = useAuthStore();
 
     useEffect(() => {
         checkAuthToken();
-    },[])
+    }, [])
 
     return (
         <Routes>
@@ -30,17 +31,28 @@ const AppRouter = () => {
                 isLogged
                     ? (
                         <>
-                            <Route path="/user" element={<DashboardAlumno />} />
-                            <Route path="/alumno" element={<PerfilAlumno />} />
-                            <Route path="/materias" element={<Materias />} />
-                            <Route path="/profesor/:profesor/:materia/asistencias" element={<Asistencias />} />
-                            <Route path="/profesor/:profesor/:materia/calificaciones" element={<Calificaciones />} />
-                            <Route path="/profesor/:profesor/:materia" element={<VistaPerfilProfesor />} />
-                           
-                            <Route path="/profesor" element={<DashboarTeacher />} />
-                            <Route path="/profesor/materias" element={<CoursesTeacher />} />
-                            <Route path="/profesor/notas/" element={< GestionNotas />} />
-                            <Route path="/profesor/perfil" element={<ProfileTeacher />} />
+                            {
+                                (user?.role === 'STUDENT')
+                                    ?
+                                    <>
+                                        <Route path="/user" element={<DashboardAlumno />} />
+                                        <Route path="/alumno" element={<PerfilAlumno />} />
+                                        <Route path="/materias" element={<Materias />} />
+                                        <Route path="/profesor/:profesor/:materia/asistencias" element={<Asistencias />} />
+                                        <Route path="/profesor/:profesor/:materia/calificaciones" element={<Calificaciones />} />
+                                        <Route path="/profesor/:profesor/:materia" element={<VistaPerfilProfesor />} />
+                                        <Route path="/*" element={<Navigate to={'/user'} />} />
+                                    </>
+                                    :
+                                    <>
+                                        <Route path="/profesor" element={<DashboarTeacher />} />
+                                        <Route path="/profesor/materias" element={<CoursesTeacher />} />
+                                        <Route path="/profesor/notas/" element={< GestionNotas />} />
+                                        <Route path="/profesor/perfil" element={<ProfileTeacher />} />
+                                        <Route path="/*" element={<Navigate to={'/profesor'} />} />
+                                    </>
+                            }
+
                         </>
                     ) :
                     <>

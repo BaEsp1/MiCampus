@@ -21,7 +21,11 @@ export const useAuthStore = () => {
 
             dispatch(setUserData(user));
             dispatch(authenticated());
-            navigate('/user')
+            if(user.role === 'STUDENT'){
+                navigate('/user')
+            }else{
+                navigate('/profesor')
+            }
         }
     }
 
