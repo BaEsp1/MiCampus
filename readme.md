@@ -7,9 +7,9 @@ Mi Campus es una aplicación web diseñada para ayudar a los profesores a gestio
 La idea de Mi Campus nació del deseo de contribuir con pequeñas instituciones que no poseen recursos para incorporar sistemas de gestión educativos. En esta oportunidad, nos enfocamos en un colegio primario/secundario, pero la aplicación puede adaptarse para cualquier institución educativa.<br/>
 
 <div >
-<img src="Frontend\src\Imagenes\screens\LP-screen.png" alt="intento" width="240"/>
-<img src="Frontend\src\Imagenes\screens\Login-screen.png" alt="intento" width="240"/>
-<img src="Frontend\src\Imagenes\screens\DashAlumno.png" alt="intento" width="240"/>
+<img src="Frontend\src\Imagenes\screens\LP-screen.png" alt="intento" width="250"/>
+<img src="Frontend\src\Imagenes\screens\Login-screen.png" alt="intento" width="250"/>
+<img src="Frontend\src\Imagenes\screens\DashAlumno.png" alt="intento" width="250"/>
 </div>
 
 ## Índice
@@ -86,11 +86,24 @@ La idea de Mi Campus nació del deseo de contribuir con pequeñas instituciones 
 3. Los alumnos pueden visualizar sus calificaciones y asistencias.
 4. Utiliza la información de contacto para comunicarte con profesores o representantes.
 
-## Diseño
- --
+## Diseño UX/UI
+El diseño de la Web App , se realizó en Figma: <br/>
+<a href="https://www.figma.com/design/iNBQBSb08kgN70DE5cfpAx/Untitled?node-id=0-1&t=xblrtJUiQn1K4Wcd-1" > Link directo </a>
+
+<iframe style="border: 1px solid rgba(0, 0, 0, 0.1);" width="800" height="450" src="https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Fdesign%2FiNBQBSb08kgN70DE5cfpAx%2FUntitled%3Fnode-id%3D0-1%26t%3DxblrtJUiQn1K4Wcd-1" allowfullscreen></iframe>
+
 
 ## Análisis de QA
 *--
 
 ## Contribuidores 
---
+
+
+|  Rol desarrollado     | Nombre y Apellido     |  Contacto/Redes       |
+|-----------------------|----------------------|----------------------|
+| Diseñadora UX/UI     |Jessica Rodriguez      |    [![LinkedIn](https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/jessi-rod-vex)|
+| Tester QA         | Hernan Esquivel   |  [![GitHub](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)](https://github.com/hernan97carp)[![LinkedIn](https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/hernan-esquivel/) |
+| Proyect Manager     | Carlos Mejia         |[![GitHub](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)](https://github.com/CarlosMejia01)[![LinkedIn](https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/carlos-alberto-mejia-perez-683600206)|
+| Backend           | Diego Garay Culla        |[![GitHub](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)](https://github.com/Dieguidev)[![LinkedIn](https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/tu-perfil)|
+| Frontend            | Jesus Valencia   |[![GitHub](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)](https://github.com/g-susvs)[![LinkedIn](https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/jesus-guillermo-valencia-salvador)|
+| Frontend       | Bárbara Espinola       |[![GitHub](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)](https://github.com/BaEsp1)[![LinkedIn](https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/baesp/)|
