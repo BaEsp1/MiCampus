@@ -4,16 +4,11 @@
 
 Mi Campus es una aplicación web diseñada para ayudar a los profesores a gestionar calificaciones, asistencias y mantener un orden diario de los alumnos. Los alumnos pueden ver su situación en cada materia, incluyendo sus calificaciones y asistencias. Además, tanto alumnos como profesores pueden ver información de contacto para facilitar la comunicación vía email.
 
-La idea de Mi Campus nació del deseo de contribuir con pequeñas instituciones que no poseen recursos para incorporar sistemas de gestión educativos. En esta oportunidad, nos enfocamos en un colegio primario/secundario, pero la aplicación puede adaptarse para cualquier institución educativa.
-<img src="Frontend\src\Imagenes\screens\LP-screen.png" alt="intento" width="200"/>
-<img src="Frontend\src\Imagenes\screens\Login-screen.png" alt="intento" width="200"/>
-<img src="Frontend\src\Imagenes\screens\DashAlumno.png" alt="intento" width="200"/> <!-- Ajusta el ancho a 200px -->
+La idea de Mi Campus nació del deseo de contribuir con pequeñas instituciones que no poseen recursos para incorporar sistemas de gestión educativos. En esta oportunidad, nos enfocamos en un colegio primario/secundario, pero la aplicación puede adaptarse para cualquier institución educativa.<br/>
 
-*-*-**-*-*-**-
-
-![](Frontend\src\Imagenes\screens\LP-screen.png)
-![](Frontend\src\Imagenes\screens\Login-screen.png)
-![](Frontend\src\Imagenes\screens\DashAlumno.png)
+<img src="Frontend\src\Imagenes\screens\LP-screen.png" alt="intento" width="250"/>
+<img src="Frontend\src\Imagenes\screens\Login-screen.png" alt="intento" width="250"/>
+<img src="Frontend\src\Imagenes\screens\DashAlumno.png" alt="intento" width="250"/>
 
 ## Índice
 
