@@ -22,7 +22,8 @@ const VistaPerfilProfesor: React.FC = () => {
           {/* Presentacion */}
           <div>
             <h1 className='ml-12 p-2 font-semibold' >Presentación:</h1>
-            <p className='w-[40em] flex justify-center items-center mx-auto p-2'>¡Hola! Soy un/a profesor/a comprometido/a y apasionado/a por la educación. Con amplia experiencia y dedicación, busco inspirar y guiar a mis estudiantes en su aprendizaje. Me enfoco en crear un ambiente de aprendizaje inclusivo y estimulante, donde cada estudiante pueda alcanzar su máximo potencial. Mi objetivo es brindar una educación de calidad que motive a mis estudiantes a explorar, aprender y crecer. ¡Espero poder acompañarte en este viaje educativo!</p>
+            <video src=" " className='w-[40em] flex justify-center items-center mx-auto p-2'></video>
+            {/* <img  src="" width="360" height="640" alt="Video failed "/> */}
           </div>
           { profesor && materia ? <>
           <div  className='flex flex-row'style={{justifyContent: 'space-evenly'}}>
