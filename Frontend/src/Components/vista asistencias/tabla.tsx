@@ -1,10 +1,5 @@
 import React, { useEffect, useState } from "react";
 
-interface ProfesorProps {
-    profesor: string;
-    materia: string;
-}
-
 interface User {
     name: string;
     last_name: string;
@@ -12,7 +7,7 @@ interface User {
     notes: [];
 }
 
-const TablaAsistencias: React.FC<ProfesorProps> = ({ profesor, materia }) => {
+const TablaAsistencias: React.FC = () => {
     const [userData, setUserData] = useState<User | null>(null);
     const [selectedDate, setSelectedDate] = useState<string>('');
     const [asistenciaEnFecha, setAsistenciaEnFecha] = useState<{ date: string, asist: boolean } | null>(null);
@@ -56,8 +51,7 @@ const TablaAsistencias: React.FC<ProfesorProps> = ({ profesor, materia }) => {
     const estadoAlumno = porcentajeAsistencias <= 80 ? 'Regular' : 'Irregular';
 
     return (
-        <div>
-            <h1 className="text-white">holi {profesor}, {materia}</h1>
+        <div style={{boxShadow: "0 2px 4px #0000001a"}}>
             <div className="flex flex-col">
                 <div className="text-white flex justify-center gap-4 p-2" style={{ background: 'rgb(54, 74, 137)' }}>
                     Nombre y Apellido: <p style={{fontWeight:'bold'}}> {userData?.name} {userData?.last_name}</p>

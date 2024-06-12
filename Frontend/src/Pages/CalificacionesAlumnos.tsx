@@ -29,7 +29,7 @@ const Calificaciones: React.FC = () => {
         </div>
 
         { profesor && materia ? <>
-          <Notas profesor={profesor} materia={materia}/> 
+          <Notas materia={materia}/> 
           </> 
           : <h1> Upps... Algo salió mal , intenta nuevamente</h1>}
   

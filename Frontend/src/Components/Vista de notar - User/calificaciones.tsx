@@ -3,7 +3,6 @@ import { useSelector } from "react-redux";
 import { RootState } from "../../Redux/store";
 
 interface ProfesorProps {
-    profesor: string;
     materia: string;
 }
 
@@ -21,7 +20,7 @@ interface Nota {
     capacity: string;
 }
 
-const Notas: React.FC<ProfesorProps> = ({ profesor, materia }) => {
+const Notas: React.FC<ProfesorProps> = ({ materia }) => {
     const [userData, setUserData] = useState<User | null>(null);
     const notas = useSelector((state: RootState) => state.user.notas as Nota[]);
 
@@ -44,8 +43,7 @@ const Notas: React.FC<ProfesorProps> = ({ profesor, materia }) => {
     const estado = promedio > 60 ? "Aprobado" : "Desaprobado";
 
     return (
-        <div>
-            <h1 className="text-white">holi {profesor}, {materia}</h1>
+        <div style={{boxShadow: "0 2px 4px #0000001a"}}>
 
             <div className="flex flex-col">
                 <div className="text-white flex justify-center gap-4 p-2" style={{ background: 'rgb(54, 74, 137)' }}>

@@ -29,7 +29,7 @@ const Asistencias: React.FC = () => {
                     </div>
                     <hr/>
                 { profesor && materia ? <>
-                    <TablaAsistencias profesor={profesor} materia={materia} />
+                    <TablaAsistencias />
                     </> 
                 : <h1> Upps... Algo salió mal , intenta nuevamente</h1>}
                 </div>
