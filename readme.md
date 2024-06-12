@@ -7,9 +7,9 @@ Mi Campus es una aplicación web diseñada para ayudar a los profesores a gestio
 La idea de Mi Campus nació del deseo de contribuir con pequeñas instituciones que no poseen recursos para incorporar sistemas de gestión educativos. En esta oportunidad, nos enfocamos en un colegio primario/secundario, pero la aplicación puede adaptarse para cualquier institución educativa.<br/>
 
 <div >
-<img src="Frontend\src\Imagenes\screens\LP-screen.png" alt="intento" width="250"/>
-<img src="Frontend\src\Imagenes\screens\Login-screen.png" alt="intento" width="250"/>
-<img src="Frontend\src\Imagenes\screens\DashAlumno.png" alt="intento" width="250"/>
+<img src="Frontend\src\Imagenes\screens\LP-screen.png" alt="screen-LP" width="250"/>
+<img src="Frontend\src\Imagenes\screens\Login-screen.png" alt="screen-Login" width="250"/>
+<img src="Frontend\src\Imagenes\screens\DashAlumno.png" alt="screen-Dashboard" width="250"/>
 </div>
 
 ## Índice
@@ -87,11 +87,9 @@ La idea de Mi Campus nació del deseo de contribuir con pequeñas instituciones 
 4. Utiliza la información de contacto para comunicarte con profesores o representantes.
 
 ## Diseño UX/UI
+<br/>
 El diseño de la Web App , se realizó en Figma: <br/>
-<a href="https://www.figma.com/design/iNBQBSb08kgN70DE5cfpAx/Untitled?node-id=0-1&t=xblrtJUiQn1K4Wcd-1" > Link directo </a>
-
-<iframe style="border: 1px solid rgba(0, 0, 0, 0.1);" width="800" height="450" src="https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Fdesign%2FiNBQBSb08kgN70DE5cfpAx%2FUntitled%3Fnode-id%3D0-1%26t%3DxblrtJUiQn1K4Wcd-1" allowfullscreen></iframe>
-
+<a href="https://www.figma.com/design/iNBQBSb08kgN70DE5cfpAx/Untitled?node-id=0-1&t=xblrtJUiQn1K4Wcd-1" > <img src="Frontend\src\Imagenes\screens\FigmaScreen.png"  width="300"/></a>
 
 ## Análisis de QA
 *--

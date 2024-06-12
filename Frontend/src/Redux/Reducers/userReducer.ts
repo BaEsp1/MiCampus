@@ -13,7 +13,7 @@ interface UserState {
   grade: GradeData | null;
   materias: Course[] | null;
   profesores: ProfesorData[];
-};
+}
 
 const initialState: UserState = {
   searchResults: [],
