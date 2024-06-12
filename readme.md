@@ -81,7 +81,7 @@ La idea de Mi Campus nació del deseo de contribuir con pequeñas instituciones 
 ```
 
 ## Uso
-1. Regístrate como profesor o alumno.
+1. Loguea como profesor o alumno.
 2. Los profesores pueden gestionar calificaciones y asistencias.
 3. Los alumnos pueden visualizar sus calificaciones y asistencias.
 4. Utiliza la información de contacto para comunicarte con profesores o representantes.
