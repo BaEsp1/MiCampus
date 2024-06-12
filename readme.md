@@ -12,6 +12,8 @@ La idea de Mi Campus nació del deseo de contribuir con pequeñas instituciones 
 <img src="Frontend\src\Imagenes\screens\DashAlumno.png" alt="screen-Dashboard" width="250"/>
 </div>
 
+Deploy del proyecto : https://mi-campus.vercel.app
+
 ## Índice
 
 1. [Tecnologías Utilizadas](#tecnologías-utilizadas)
@@ -32,7 +34,7 @@ La idea de Mi Campus nació del deseo de contribuir con pequeñas instituciones 
 | Tailwind CSS          | Prisma               | Trello               |
 | Vite                  | PostgreSQL           | Discord              |
 | Redux                 | Jest     | |
-| Deploy: - Vercel        | Deploy: - Render       | |
+| Deploy:  Vercel        | Deploy:  Render       | |
 
 
 ## Funcionalidades
