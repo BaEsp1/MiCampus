@@ -45,17 +45,17 @@ const FormPerfilAlumno: React.FC = () => {
         }
     };
 
-    const handleRepresentanteInfoChange = (key: keyof User['representante'], value: string) => {
-        if (userData && userData.representante) {
-            setUserData({
-                ...userData,
-                representante: {
-                    ...userData.representante,
-                    [key]: value
-                }
-            });
-        }
-    };
+    // const handleRepresentanteInfoChange = (key: keyof User['representante'], value: string) => {
+    //     if (userData && userData.representante) {
+    //         setUserData({
+    //             ...userData,
+    //             representante: {
+    //                 ...userData.representante,
+    //                 [key]: value
+    //             }
+    //         });
+    //     }
+    // };
 
     const getInitials = (name: string, lastName: string) => {
         return `${name.charAt(0)}${lastName.charAt(0)}`.toUpperCase();

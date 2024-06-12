@@ -101,7 +101,7 @@ const FormPerfilAlumno: React.FC = () => {
                     <label>Nombres:</label>
                     <input
                         type="text"
-                        className="border rounded p-2 w-[21em]"
+                        className="border rounded p-2 w-[21em] h-[2.7em]"
                         style={{ borderColor: '#CCCCCC' }}
                         value={userData?.name || ''}
                         onChange={(e) => handleUserDataChange('name', e.target.value )}
@@ -112,7 +112,7 @@ const FormPerfilAlumno: React.FC = () => {
                     <label>Apellidos:</label>
                     <input
                         type="text"
-                        className="border rounded p-2 w-[21em]"
+                        className="border rounded p-2 w-[21em] h-[2.7em]"
                         style={{ borderColor: '#CCCCCC' }}
                         value={userData?.last_name || ''}
                         onChange={(e) => handleUserDataChange('last_name', e.target.value )}
@@ -123,7 +123,7 @@ const FormPerfilAlumno: React.FC = () => {
                     <label>Nº de DNI:</label>
                     <input
                         type="text"
-                        className="border rounded p-2 w-[21em]"
+                        className="border rounded p-2 w-[21em]  h-[2.7em]"
                         style={{ borderColor: '#CCCCCC' }}
                         value={userData?.dni || ''}
                         onChange={(e) => handleUserDataChange('dni', e.target.value )}
@@ -134,7 +134,7 @@ const FormPerfilAlumno: React.FC = () => {
                     <label>Correo electrónico:</label>
                     <input
                         type="text"
-                        className="border rounded p-2 w-[21em]"
+                        className="border rounded p-2 w-[21em] h-[2.7em]"
                         style={{ borderColor: '#CCCCCC' }}
                         value={userData?.email || ''}
                         onChange={(e) => handleUserDataChange('email', e.target.value )}
@@ -162,7 +162,7 @@ const FormPerfilAlumno: React.FC = () => {
                     <label>Nombre y Apellido:</label>
                     <input
                         type="text"
-                        className="border rounded p-2 w-[21em]"
+                        className="border rounded p-2 w-[21em] h-[2.7em]"
                         style={{ borderColor: '#CCCCCC' }}
                         value={userData?.representante?.name || ''}
                         onChange={(e) => handleRepresentanteInfoChange('name', e.target.value )}
@@ -173,7 +173,7 @@ const FormPerfilAlumno: React.FC = () => {
                     <label>Teléfono:</label>
                     <input
                         type="text"
-                        className="border rounded p-2 w-[21em]"
+                        className="border rounded p-2 w-[21em] h-[2.7em]"
                         style={{ borderColor: '#CCCCCC' }}
                         value={userData?.representante?.telefono || ''}
                         onChange={(e) => handleRepresentanteInfoChange('telefono', e.target.value )}
@@ -184,7 +184,7 @@ const FormPerfilAlumno: React.FC = () => {
                     <label>Correo Electrónico:</label>
                     <input
                         type="text"
-                        className="border rounded p-2 w-[21em]"
+                        className="border rounded p-2 w-[21em]  h-[2.7em]"
                         style={{ borderColor: '#CCCCCC' }}
                         value={userData?.representante?.correoElectronico || ''}
                         onChange={(e) => handleRepresentanteInfoChange('correoElectronico', e.target.value )}

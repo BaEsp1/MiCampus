@@ -53,26 +53,27 @@ const TablaAsistencias: React.FC = () => {
     return (
         <div style={{boxShadow: "0 2px 4px #0000001a"}}>
             <div className="flex flex-col">
-                <div className="text-white flex justify-center gap-4 p-2" style={{ background: 'rgb(54, 74, 137)' }}>
+                <div className="text-white flex justify-center gap-4 p-2" style={{ background: 'rgb(54, 74, 137)', borderRadius:' 0.5em 0.5em 0 0'}}>
                     Nombre y Apellido: <p style={{fontWeight:'bold'}}> {userData?.name} {userData?.last_name}</p>
                 </div>
             </div>
             <hr />
-            <div style={{ border: 'solid 2px #cccc' }}>
+            <div style={{ border: 'solid 2px #cccc', borderRadius: "0 0 0.5em 0.5em" , padding:"0.5em"}}>
                 <div className="grid grid-cols-4 gap-1 p-3">
-                    <div className="bg-blue-500 text-white font-semibold flex gap-1 p-2 justify-center">Asistencias Totales</div>
-                    <div className="bg-blue-500 text-white font-semibold flex gap-1 p-2 justify-center">Asistencias</div>
-                    <div className="bg-blue-500 text-white font-semibold flex gap-2 p-2 justify-center">Inasistencias</div>
-                    <div className="bg-blue-500 text-white font-semibold flex gap-2 p-2 justify-center">Estado</div>
-                    <div className="p-1 font-bold text-center" style={{ border: 'solid 2px #cccc' }}>{totalAsistencias}</div>
-                    <div className="p-1 font-bold text-center" style={{ border: 'solid 2px #cccc' }}>{asistencias}</div>
-                    <div className="p-1 font-bold text-center" style={{ border: 'solid 2px #cccc' }}>{inasistencias}</div>
-                    <div className="p-1 font-bold text-center" style={{ border: 'solid 2px #cccc' }}>{estadoAlumno}</div>
+                    <div className="bg-blue-500 text-white font-semibold flex gap-1 p-2 justify-center" style={{borderRadius:"0.5em"}}>Registro Total</div>
+                    <div className="bg-blue-500 text-white font-semibold flex gap-1 p-2 justify-center" style={{borderRadius:"0.5em"}}>Asistencias</div>
+                    <div className="bg-blue-500 text-white font-semibold flex gap-2 p-2 justify-center" style={{borderRadius:"0.5em"}}>Inasistencias</div>
+                    <div className="bg-blue-500 text-white font-semibold flex gap-2 p-2 justify-center" style={{borderRadius:"0.5em"}}>Estado</div>
+                    <div className="p-1 font-bold text-center" style={{ border: 'solid 2px rgba(204, 204, 204, 0.6)',borderRadius:"0.5em" }}>{totalAsistencias}</div>
+                    <div className="p-1 font-bold text-center" style={{ border: 'solid 2px rgba(204, 204, 204, 0.6)',borderRadius:"0.5em" }}>{asistencias}</div>
+                    <div className="p-1 font-bold text-center" style={{ border: 'solid 2px rgba(204, 204, 204, 0.6)',borderRadius:"0.5em"}}>{inasistencias}</div>
+                    <div className="p-1 font-bold text-center" style={{ border: 'solid 2px rgba(204, 204, 204, 0.6)',borderRadius:"0.5em"}}>{estadoAlumno}</div>
                 </div>
-            </div>
-
-            <h2 className="p-2 text-2xl" >Consultá una fecha específica:</h2>
-            <div className="p-2 w-[20em] flex justify-center item-center mx-auto"  style={{ border: 'solid 2px #cccc' }}>
+            </div><br/>
+            <hr />
+            <h2 className="p-2 text-xl font-semibold" >Consultá una fecha específica:</h2>
+            <p className="p-1">Seleccioná dentro del recuadro la fecha que deseas consultar, y te brindará información</p><br/>
+            <div className=" w-[20em] flex justify-center item-center mx-auto p-1"  style={{ border: 'solid 2px  rgba(204, 204, 204, 0.7)',borderRadius:"0.5em"  }}>
                 <label htmlFor="fecha" className="font-semibold m-2">Fecha: </label>
                 <input
                     type="date"
@@ -80,14 +81,15 @@ const TablaAsistencias: React.FC = () => {
                     value={selectedDate}
                     onChange={(e) => setSelectedDate(e.target.value)}
                 />
-            </div>
+            </div><br/>
+
             {selectedDate && (
                 <div className="p-2 w-[30em] flex justify-center item-center mx-auto flex-col" >
                     {/* <h3>Resultado para {selectedDate}:</h3> */}
                     {asistenciaEnFecha ? (
                         <p className="font-semibold text-xl  flex justify-center item-center">{asistenciaEnFecha.asist ? `${userData?.name} ${userData?.last_name} asistió a clases` : `${userData?.name} ${userData?.last_name} No asistió a clases`}</p>
                     ) : (
-                        <p>No hay registros para esta fecha</p>
+                        <p className="font-semibold text-xl  flex justify-center item-center">No hay registros cargados para esa fecha</p>
                     )}
                 </div>
             )}
