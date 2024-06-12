@@ -27,7 +27,7 @@ const Menu: React.FC = () => {
                 </div>
                 : <div className={`navbar ${isOpen ? 'open' : ''}`} style={{ paddingTop: '1.2em' }}>
                     <Link to="/user">Menu Principal <img src={Vector} style={{ width: '10px', height: '14px' }} /></Link>
-                    <Link to="/materias">Materias <img src={Vector} style={{ width: '10px', height: '14px' }} /></Link>
+                    <Link to="/profesor/materias">Materias <img src={Vector} style={{ width: '10px', height: '14px' }} /></Link>
                     <Link to="/alumno">Perfil <img src={Vector} style={{ width: '10px', height: '14px' }} /></Link>
                     <Link to="/profesor/notas">Gestión de notas <img src={Vector} style={{ width: '10px', height: '14px' }} /></Link>
                 </div>

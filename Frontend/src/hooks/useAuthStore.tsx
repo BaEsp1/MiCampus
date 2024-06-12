@@ -1,9 +1,10 @@
 import { useAppDispatch, useAppSelector } from "../Redux/hooks";
-import { AuthSuccessResponse, MiCampusApi, User } from "../config/api";
+import { AuthSuccessResponse, MiCampusApi, TeacherByIDResponse, User } from "../config/api";
 import { authenticated, checkingAuth, clearErrorMessage, notAuthenticated } from "../Redux/auth";
 import { useNavigate } from "react-router-dom";
 import { AxiosError } from "axios";
 import { clearUserData, setUserData } from "../Redux/Reducers/userReducer";
+import { setTeacherData } from "../Redux/Reducers/teacherReducer";
 
 export const useAuthStore = () => {
     const navigate = useNavigate();
@@ -38,6 +39,17 @@ export const useAuthStore = () => {
             const { token, user } = data;
             localStorage.setItem('x-token', token);
             localStorage.setItem('user', JSON.stringify(user));
+
+            if (user.role === 'TEACHER') {
+                const { data } = await MiCampusApi.get<TeacherByIDResponse>(`/teachers/${user?.id}`)
+                dispatch(
+                    setTeacherData({
+                        teacher: data.teacher,
+                        tutorships: data.tutorships,
+                        courses: data.courses,
+                    })
+                );
+            }
 
             dispatch(setUserData(user));
             dispatch(authenticated());
