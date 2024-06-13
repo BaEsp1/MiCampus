@@ -41,7 +41,7 @@ const DashboarTeacher: React.FC = () => {
                         <div className="Bienvenida p-4">
                             <img src="/welcome.png" alt="Bienvenido" width={300} height={300} style={{ float: 'right' }} />
                             <h1 className="p-3 font-semibold text-3xl">
-                                ¡Bienvenido profesor@ {userData ? `${userData.name} ${userData.last_name}` : 'Alumn@'}!
+                                ¡Bienvenid@ profesor@ {userData ? `${userData.name} ${userData.last_name}` : 'Alumn@'}!
                             </h1>
                             <h2 className="p-4 text-lg italic">¡Qué bueno verte por aqui! ¿Por dónde quieres comenzar?</h2>
                             <div className='flex flex-row gap-5 p-[1em] mx-auto w-[40em]'>
