@@ -61,7 +61,7 @@ const DashboarTeacher: React.FC = () => {
 
                         <div className='flex flex-col'>
                             <h1 className="p-2 text-lg ml-[3em]">Instituto educativo:</h1>
-                            <h1 className=" mx-auto text-xl font-bold italic">Escuela Segundaria Presidente Domingo F. Sarmiento </h1>
+                            <h1 className=" mx-auto text-xl font-bold italic">Escuela Secundaria Presidente Domingo F. Sarmiento</h1>
                         </div>
 
                         <div className='videos flex flex-row gap-2'>
