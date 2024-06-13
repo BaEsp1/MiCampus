@@ -43,7 +43,7 @@ const DashboarTeacher: React.FC = () => {
                             <h1 className="p-3 font-semibold text-3xl">
                                 ¡Bienvenid@ profesor@ {userData ? `${userData.name} ${userData.last_name}` : 'Alumn@'}!
                             </h1>
-                            <h2 className="p-4 text-lg italic">¡Qué bueno verte por aqui! ¿Por dónde quieres comenzar?</h2>
+                            <h2 className="p-4 text-lg italic">¡Qué bueno verte por aquí! ¿Por dónde quieres comenzar?</h2>
                             <div className='flex flex-row gap-5 p-[1em] mx-auto w-[40em]'>
                                 <div className='bg-blue-500 p-2 text-white rounded-lg transform transition-transform duration-200 hover:scale-110 hover:bg-[rgb(54,74,137)] shadow-lg'>
                                     <Link to="/profesor/materias" className='p-3 font-semibold text-lg'>Ver mis Materias</Link>
