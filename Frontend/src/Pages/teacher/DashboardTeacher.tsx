@@ -69,9 +69,9 @@ const DashboarTeacher: React.FC = () => {
                         </div>
 
                         <div className='videos flex flex-wrap  gap-4 justify-center'>
-                            <video src={video1} height={350} width={350} autoPlay muted controls />
-                            <video src={video2} height={350} width={350} autoPlay muted controls />
-                            <video src={video3} height={350} width={350} autoPlay muted controls />
+                            <video src={video1} height={350} width={350} autoPlay muted />
+                            <video src={video2} height={350} width={350} autoPlay muted />
+                            <video src={video3} height={350} width={350} autoPlay muted />
                         </div>
                         <hr></hr>
                     </div>
