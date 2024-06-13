@@ -10,6 +10,7 @@ La idea de Mi Campus nació del deseo de contribuir con pequeñas instituciones 
 <img src="Frontend\src\Imagenes\screens\LP-screen.png" alt="screen-LP" width="250"/>
 <img src="Frontend\src\Imagenes\screens\Login-screen.png" alt="screen-Login" width="250"/>
 <img src="Frontend\src\Imagenes\screens\DashAlumno.png" alt="screen-Dashboard" width="250"/>
+<img src="Frontend\src\Imagenes\screens\DashProfesor.png" alt="screen-Dashboard" width="250"/>
 </div>
 
 Deploy del proyecto : https://mi-campus.vercel.app
