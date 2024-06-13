@@ -1,5 +1,6 @@
 :root{
     --dark-text: #1A3B34;
+    --loader-color: #868688;
 }
 .notasContainer{
     max-width: 1400px;
@@ -14,7 +15,7 @@
     margin-bottom: 20px;
 }
 .inputs{
-    width: 400px;
+    max-width: 400px;
     display: flex;
     flex-direction: column;
     gap: 16px;
@@ -38,12 +39,17 @@
 }
 
 .btn-results{
-    width: 100px;
-    background-color: rgb(5, 5, 66);
+    width: 100%;
+    background-color: rgb(28, 28, 118);
     color: white;
-    border-radius: 4px;
+    border-radius: 8px;
     font-size: 18px;
     padding: 8px 12px;
+    transition: .3s;
+    margin-bottom: 16px;
+}
+.btn-results:hover{
+    background-color: rgb(16, 16, 83);
 }
 .table{
 }
@@ -58,3 +64,35 @@
     @apply py-6 text-center;
     font-size: 18px;
 }
+
+
+
+.lds-dual-ring,
+.lds-dual-ring:after {
+  box-sizing: border-box;
+}
+.lds-dual-ring {
+  display: inline-block;
+  width: 80px;
+  height: 80px;
+}
+.lds-dual-ring:after {
+  content: " ";
+  display: block;
+  width: 40px;
+  height: 40px;
+  margin: 8px;
+  border-radius: 50%;
+  border: 6.4px solid var(--loader-color);
+  border-color: var(--loader-color) transparent var(--loader-color) transparent;
+  animation: lds-dual-ring 1.2s linear infinite;
+}
+@keyframes lds-dual-ring {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+

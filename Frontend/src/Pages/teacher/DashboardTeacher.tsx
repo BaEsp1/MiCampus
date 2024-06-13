@@ -35,27 +35,31 @@ const DashboarTeacher: React.FC = () => {
                     <h1 className='text-3xl'>Cargando</h1>
                 </div>
             ) : (
-                <div className="flex flex-row p-4">
-                    <div className="w-72 hidden sm:block"></div>
-                    <div className="mx-8 gap-4 flex flex-col w-auto">
-                        <div className="Bienvenida p-4">
-                            <img src="/welcome.png" alt="Bienvenido" width={300} height={300} style={{ float: 'right' }} />
-                            <h1 className="p-3 font-semibold text-3xl">
-                                ¡Bienvenid@ profesor@ {userData ? `${userData.name} ${userData.last_name}` : 'Alumn@'}!
-                            </h1>
-                            <h2 className="p-4 text-lg italic">¡Qué bueno verte por aquí! ¿Por dónde quieres comenzar?</h2>
-                            <div className='flex flex-row gap-5 p-[1em] mx-auto w-[40em]'>
-                                <div className='bg-blue-500 p-2 text-white rounded-lg transform transition-transform duration-200 hover:scale-110 hover:bg-[rgb(54,74,137)] shadow-lg'>
-                                    <Link to="/profesor/materias" className='p-3 font-semibold text-lg'>Ver mis Materias</Link>
+                <div className="flex justify-center items-center p-4">
+                    {/* <div className="w-72 hidden sm:block"></div> */}
+                    <div className="gap-4 flex flex-col w-auto">
+                        <div className="flex justify-between p-4">
+                            <div className="flex flex-col lg:flex-row ">
+                                <div>
+                                    <h1 className="p-3 font-semibold text-3xl">
+                                        ¡Bienvenid@ profesor@ {userData ? `${userData.name} ${userData.last_name}` : 'Alumn@'}!
+                                    </h1>
+                                    <h2 className="p-4 text-lg italic">¡Qué bueno verte por aquí! ¿Por dónde quieres comenzar?</h2>
+                                    <div className='flex flex-wrap gap-5 p-[1em] mx-auto]'>
+                                        <div className='bg-blue-500 p-2 whitespace-nowrap text-white rounded-lg transform transition-transform duration-200 hover:scale-110 hover:bg-[rgb(54,74,137)] shadow-lg'>
+                                            <Link to="/profesor/materias" className='p-3 font-semibold text-lg'>Ver mis Materias</Link>
+                                        </div>
+                                        <div className='bg-blue-500 p-2 whitespace-nowrap text-white rounded-lg transform transition-transform duration-200 hover:scale-110 hover:bg-[rgb(54,74,137)] shadow-lg'>
+                                            <Link to="/profesor/notas" className='p-3 font-semibold text-lg'>Ver mis Calificaciones</Link>
+                                        </div>
+                                        <div className='bg-blue-500 p-2 whitespace-nowrap text-white rounded-lg transform transition-transform duration-200 hover:scale-110 hover:bg-[rgb(54,74,137)] shadow-lg'>
+                                            <Link to="/profesor/perfil" className='p-3 font-semibold text-lg'>Ver mi Perfil</Link>
+                                        </div>
+                                    </div>
                                 </div>
-                                <div className='bg-blue-500 p-2 text-white rounded-lg transform transition-transform duration-200 hover:scale-110 hover:bg-[rgb(54,74,137)] shadow-lg'>
-                                    <Link to="/profesor/notas" className='p-3 font-semibold text-lg'>Ver mis Calificaciones</Link>
-                                </div>
-                                <div className='bg-blue-500 p-2 text-white rounded-lg transform transition-transform duration-200 hover:scale-110 hover:bg-[rgb(54,74,137)] shadow-lg'>
-                                    <Link to="/profesor/perfil" className='p-3 font-semibold text-lg'>Ver mi Perfil</Link>
-                                </div>
+                                <img src="/welcome.png" alt="Bienvenido" className="m-auto" width={300} height={300} />
                             </div>
-                            <br/>
+                            <br />
                             <hr className='mt-2' />
                         </div>
 
@@ -64,7 +68,7 @@ const DashboarTeacher: React.FC = () => {
                             <h1 className=" mx-auto text-xl font-bold italic">Escuela Secundaria Presidente Domingo F. Sarmiento</h1>
                         </div>
 
-                        <div className='videos flex flex-row gap-2'>
+                        <div className='videos flex flex-wrap  gap-4 justify-center'>
                             <video src={video1} height={350} width={350} autoPlay muted controls />
                             <video src={video2} height={350} width={350} autoPlay muted controls />
                             <video src={video3} height={350} width={350} autoPlay muted controls />

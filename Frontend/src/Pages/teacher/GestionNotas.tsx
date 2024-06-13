@@ -5,7 +5,7 @@ import Swal from 'sweetalert2';
 import { Califications, MiCampusApi, TeacherByIDResponse } from '../../config/api';
 import SkeletonGestionNotas from './SkeletonGestionNotas';
 import { useForm } from '../../hooks';
-import './notas.css';
+import './css/notas.css';
 
 type Course = { courseId: string; course: string };
 type Grade = { gradeId: string; grade: string };
@@ -20,6 +20,7 @@ const GestionNotas = () => {
     const { user } = useAppSelector(state => state.user);
 
     const [isLoading, setIsLoading] = useState(false);
+    const [loadingResults, setLoadingResults] = useState(false);
     const [studentsCalifications, setStudentsCalifications] = useState<Califications[]>([]);
     const [gestionState, setGetionState] = useState<gestionStat>({
         courses: [],
@@ -46,10 +47,11 @@ const GestionNotas = () => {
             return;
 
         }
-
+        setLoadingResults(true);
         MiCampusApi.get<Califications[]>(`/califications/idTeacher/${user?.id}/idCourse/${formState.course}/IdGrade/${formState.grade}`)
             .then(resp => {
                 setStudentsCalifications(resp.data);
+                setLoadingResults(false);
             })
             .catch(err => console.error(err));
     }
@@ -103,13 +105,13 @@ const GestionNotas = () => {
                         <option value={'no-selected'}>Selecciona un curso</option>
                         {
                             gestionState.courses.map(({ course, courseId }) => (
-                                <option value={courseId}> {course}</option>
+                                <option key={courseId} value={courseId}> {course}</option>
                             ))
                         }
                     </select>
                 </div>
                 <button
-                    className="bg-blue-900 p-2 rounded-md text-xl text-white mb-8"
+                    className="btn-results"
                     onClick={getStudents}
                 >
                     Buscar
@@ -132,12 +134,16 @@ const GestionNotas = () => {
                     </div>
                 </div>
                 {
+                    (loadingResults)
+                    ?
+                    <LoadingResults/>
+                    :
                     studentsCalifications.length === 0
                     ? <div className="text-center text-2xl p-8">
                         No hay resultados
                     </div>
-                    :studentsCalifications.map(calification => (
-                        <div className="table__row">
+                    :studentsCalifications.map((calification) => (
+                        <div key={calification.id} className="table__row">
                             <div className="table__cell">
                                 {calification.last_name}
                             </div>
@@ -161,3 +167,14 @@ const GestionNotas = () => {
 }
 
 export default GestionNotas
+
+
+
+const LoadingResults = () => {
+  return (
+    <div className="flex justify-center items-center p-4">
+      <div className="lds-dual-ring"></div>
+    </div>
+  )
+}
+

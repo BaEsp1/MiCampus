@@ -1,4 +1,4 @@
-import './skeleton.css'
+import './css/skeleton.css'
 
 const SkeletonGestionNotas = () => {
     return (

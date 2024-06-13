@@ -20,7 +20,7 @@ interface User {
 }
 
 const Navbar: React.FC = () => {
-    const { isLogged} = useAppSelector((state) => state.auth);
+    const { isLogged } = useAppSelector((state) => state.auth);
     const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false);
     const [userData, setUserData] = useState<User | null>(null);
     const dispatch = useDispatch();
@@ -60,36 +60,38 @@ const Navbar: React.FC = () => {
 
     return (
         <>
-            <nav className="bg-white flex justify-between items-center h-20">
-                <div className="container mx-auto">
-                    <div className="flex items-center justify-around" style={{ gap: '52em' }}>
+            <nav className="bg-white flex justify-between items-center h-20 px-2">
+                <div className="w-full">
+                    <div className="flex items-center justify-around">
                         {isLoggedIn ? (
                             <>
-                                <div className="flex items-center w-48 justify-between">
+                                <div className="flex items-center justify-between">
                                     <Menu />
                                     <Link to="/user" className="ml-8"><img src={LogoL} alt="Logo" className='h-[3em]' /></Link>
                                 </div>
-                                <ul className="flex items-center" style={{ width: '21em' }}>
-                                    <li className="mr-6"><Link to="/user" className="text-black font-semibold">Home</Link></li>
-                                    <li className="mr-6">
-                                        <Link to="/alumno">
-                                            {userData && (
-                                                <ProfileInitials name={userData.name} lastName={userData.last_name} />
-                                            )}
-                                        </Link>
-                                    </li>
-                                    <li style={{ marginLeft: '-1.3em' }}>
-                                        <ul className="flex flex-col items-left">
-                                            <li className='font-semibold text-sm'>{userData ? userData.email : ""}</li>
-                                            <li className='text-sm'>{userData ? (userData.name + " " + userData.last_name) : ""}</li>
-                                        </ul>
-                                    </li>
-                                    <li className="ml-4">
+                                <div className="flex">
+                                    <section className="items-center hidden sm:flex">
+                                        <div className="mr-6">
+                                            <Link to="/alumno">
+                                                {userData && (
+                                                    <ProfileInitials name={userData.name} lastName={userData.last_name} />
+                                                )}
+                                            </Link>
+                                        </div>
+                                        <div style={{ marginLeft: '-1.3em' }}>
+                                            <ul className="flex flex-col items-left">
+                                                <li className='font-semibold text-sm'>{userData ? userData.email : ""}</li>
+                                                <li className='text-sm'>{userData ? (userData.name + " " + userData.last_name) : ""}</li>
+                                            </ul>
+                                        </div>
+                                    </section>
+                                    <div className="ml-4">
                                         <button onClick={logout}>
                                             <img src={Off} alt="Logout" className='h-8 w-8' />
                                         </button>
-                                    </li>
-                                </ul>
+                                    </div>
+                                </div>
+
                             </>
                         ) : (
                             <>

@@ -8,7 +8,7 @@ const LandingPage: React.FC = () => {
             backgroundImage: `url(${Fachada})`,
             backgroundSize: 'cover',
             backgroundPosition: 'center',
-            width: '100vw',
+            width: '100%',
             minHeight: '90vh',
             display: 'flex',
             flexDirection: 'column',
@@ -25,7 +25,7 @@ const LandingPage: React.FC = () => {
             <div className='CarruselLP' style={{ width: '75%', margin: '0 auto' }}>
                 <Carousel />
             </div>
-            <a href='/login'>
+            {/* <a href='/login'>
                 <button 
                     style={{
                         backgroundColor: 'White',
@@ -41,7 +41,7 @@ const LandingPage: React.FC = () => {
                 >
                     INICIA SESIÓN
                 </button>
-            </a>
+            </a> */}
         </div>
     );
 }
