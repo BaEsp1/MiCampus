@@ -7,10 +7,10 @@ Mi Campus es una aplicación web diseñada para ayudar a los profesores a gestio
 La idea de Mi Campus nació del deseo de contribuir con pequeñas instituciones que no poseen recursos para incorporar sistemas de gestión educativos. En esta oportunidad, nos enfocamos en un colegio primario/secundario, pero la aplicación puede adaptarse para cualquier institución educativa.<br/>
 
 <div >
-<img src="Frontend\src\Imagenes\screens\LP-screen.png" alt="screen-LP" width="250"/>
-<img src="Frontend\src\Imagenes\screens\Login-screen.png" alt="screen-Login" width="250"/>
-<img src="Frontend\src\Imagenes\screens\DashAlumno.png" alt="screen-Dashboard" width="250"/>
-<img src="Frontend\src\Imagenes\screens\DashProfesor.png" alt="screen-Dashboard" width="250"/>
+<img src="Frontend\src\Imagenes\screens\LP-screen.png" alt="screen-LP" width="220"/>
+<img src="Frontend\src\Imagenes\screens\Login-screen.png" alt="screen-Login" width="220"/>
+<img src="Frontend\src\Imagenes\screens\DashAlumno.png" alt="screen-Dashboard" width="220"/>
+<img src="Frontend\src\Imagenes\screens\DashProfesor.png" alt="screen-Dashboard" width="220"/>
 </div>
 
 Deploy del proyecto : https://mi-campus.vercel.app
