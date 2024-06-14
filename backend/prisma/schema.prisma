@@ -12,3 +12,93 @@ datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
+
+enum Role {
+  STUDENT
+  TEACHER
+  ADMIN
+}
+
+model User {
+  id        String    @id @default(uuid())
+  name      String
+  last_name String
+  password  String
+  email     String    @unique
+  birthdate DateTime?
+  dni       String    @unique
+  role      Role      @default(STUDENT)
+  gradeId   String?
+  isActive  Boolean   @default(true)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  grade_grade_tutorIdTouser Grade[] @relation("grade_tutorIdTouser")
+  grade_user_gradeIdTograde Grade?  @relation("user_gradeIdTograde", fields: [gradeId], references: [id], onUpdate: NoAction, onDelete: Cascade)
+
+  GradeCursos GradeCourse[]
+  notas       notas[]
+
+  @@index([isActive])
+}
+
+model Grade {
+  id          String  @id @default(uuid())
+  school_year Int
+  grade       String
+  section     String
+  tutorId     String?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  user_grade_tutorIdTouser User?  @relation("grade_tutorIdTouser", fields: [tutorId], references: [id], onUpdate: NoAction, onDelete: Cascade)
+  user_user_gradeIdTograde User[] @relation("user_gradeIdTograde")
+
+  GradeCourse GradeCourse[]
+}
+
+model GradeCourse {
+  id String @id @default(uuid())
+
+  gradeId  Grade  @relation(fields: [grade_id], references: [id])
+  grade_id String
+
+  cursoId  Course @relation(fields: [courseId], references: [id])
+  courseId String
+
+  teacherId User   @relation(fields: [userId], references: [id])
+  userId    String
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  notas     notas[]
+}
+
+model Course {
+  id   String @id @default(uuid())
+  name String
+
+  createdAt   DateTime      @default(now())
+  updatedAt   DateTime      @updatedAt
+  GradeCourse GradeCourse[]
+}
+
+model notas {
+  id         String  @id @default(uuid())
+  capacity   String?
+  competence String?
+  note       Int
+
+  studentId User   @relation(fields: [userId], references: [id])
+  userId    String
+
+  gradeCourseId  GradeCourse @relation(fields: [gradeCourse_id], references: [id])
+  gradeCourse_id String
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+
